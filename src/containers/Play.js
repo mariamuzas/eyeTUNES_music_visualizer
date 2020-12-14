@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react'
 
 const Play =() => {
 
+    const [lastKey, setLastKey] = useState("")
     const [keyMap, setKeyMap] = useState({
         "a": {keyPress: "a", note: "C4", color: "red", shape: "circle", beat:"8n"},
         "s": {keyPress: "s", note: "D4", color: "blue", shape: "circle", beat:"8n"}
@@ -15,18 +16,21 @@ const Play =() => {
         // setLoaded(true)
     }, [])
 
+    const synth = new Tone.Synth().toDestination();
 
     const playKey = function(key) {
-        const synth = new Tone.Synth().toDestination()
+        if (!Object.keys(keyMap).includes(key)) return;
         const { note, beat } = keyMap[key]
         synth.triggerAttackRelease(note, beat)
+        setLastKey(key)
+        setTimeout(() => setLastKey(""), 500)
     }
 
     return(
         <>
         <h1> This is the Play container</h1>
         <Visual />
-        <Instrument pads={keyMap} onKeyClick={playKey} />
+        <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
         <button>Play/Pause</button>
         </>
     )
