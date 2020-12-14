@@ -1,20 +1,22 @@
-import { Tone } from "tone/build/esm/core/Tone"
+import * as Tone from 'tone';
 
-const Key = (props) => {
+
+const Key = ({individualKey}) => {
     const synth = new Tone.Synth().toDestination()
 
-    // const play = () => {synth.triggerAttackRelease({note}, "8n")}
+    const play = () => {synth.current.triggerAttackRelease(individualKey.note, individualKey.beat)}
 
-    // const handleKeyDown = (event) => {
-    //     if (event.key === {prop.key}) {
-    //         playC4()
-    //     }
-    // }
+    const handleKeyDown = (event) => {
+        StartAudioContext(audioContext)
+        if (event.key === individualKey.keyPress) {
+            play()
+        }
+    }
 
      return (
-        
          <>
-          <p>{props.note}</p>
+        <p onKeyDown= {handleKeyDown}>a</p>
+          {/* <input type="text" onKeyDown= {handleKeyDown}></input>  */}
          </>
      )
 }

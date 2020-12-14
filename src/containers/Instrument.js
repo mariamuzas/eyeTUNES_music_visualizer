@@ -1,10 +1,14 @@
 import Key from '../components/Key.js'
 import SongInput from '../components/SongInput.js'
+import { Tone } from "tone/build/esm/core/Tone"
+
 const Instrument = ({keys}) => {
   
     const keyBoard = keys.map((key, i) => {
-        return (<Key index= {i} key ={key}> </Key>)
+
+        return (<Key key= {i} individualKey={key} > </Key>)
     }) 
+    
     return(
         <>
         <h2>this is the Instrument container</h2>
