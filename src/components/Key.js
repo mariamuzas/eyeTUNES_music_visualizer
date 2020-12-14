@@ -5,7 +5,7 @@ const Key = ({individualKey, onKeyClick}) => {
 
      return (
          <>
-            <li></li>
+            <li>{individualKey.keyPress}</li>
          </>
      )
 }
