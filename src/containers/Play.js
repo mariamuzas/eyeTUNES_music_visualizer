@@ -5,17 +5,16 @@ import {useState, useEffect} from 'react'
 
 const Play =() => {
 
-    const [keys, setKeys] = useState ([
-        {keyPress: "a", note: "C4", color: "red", shape: "circle", beat:"8n"}
-    ])
-
     const [keyMap, setKeyMap] = useState({
-        "a": {keyPress: "a", note: "C4", color: "red", shape: "circle", beat:"8n"}
+        "a": {keyPress: "a", note: "C4", color: "red", shape: "circle", beat:"8n"},
+        "s": {keyPress: "s", note: "D4", color: "blue", shape: "circle", beat:"8n"}
     })
 
     useEffect(() => {
         document.addEventListener('keydown', ({ key }) => playKey(key))
+        // setLoaded(true)
     }, [])
+
 
     const playKey = function(key) {
         const synth = new Tone.Synth().toDestination()
@@ -27,7 +26,7 @@ const Play =() => {
         <>
         <h1> This is the Play container</h1>
         <Visual />
-        <Instrument keys={keys} onKeyClick={playKey} />
+        <Instrument keys={keyMap} onKeyClick={playKey} />
         <button>Play/Pause</button>
         </>
     )
