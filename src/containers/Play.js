@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react'
 
 const Play =() => {
 
+    const [song, setSong] = useState("")
     const [lastKey, setLastKey] = useState("")
     const [keyMap, setKeyMap] = useState({
         "a": {keyPress: "a", note: "C4", color: "red", shape: "circle", beat:"8n"},
@@ -16,6 +17,12 @@ const Play =() => {
         // setLoaded(true)
     }, [])
 
+    useEffect(() => {
+        if(lastKey.length === 1){
+            setSong([...song, lastKey]);
+        }
+    }, [lastKey])
+
     const synth = new Tone.Synth().toDestination();
 
     const playKey = function(key) {
@@ -25,6 +32,7 @@ const Play =() => {
         setLastKey(key)
         setTimeout(() => setLastKey(""), 500)
     }
+
 
     return(
         <>
