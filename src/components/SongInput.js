@@ -1,6 +1,6 @@
 const SongInput = () => {
     return(
-        <form>a
+        <form>
             <input type="text" placeholder="SongInput"></input>
         </form>
     )
