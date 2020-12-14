@@ -1,12 +1,16 @@
-import KeyA from '../components/KeyA.js'
-import KeyS from '../components/KeyS.js'
+import Key from '../components/Key.js'
 import SongInput from '../components/SongInput.js'
-const Instrument =() => {
+const Instrument = ({keys}) => {
+  
+    const keyBoard = keys.map((key, i) => {
+        return (<Key index= {i} key ={key}> </Key>)
+    }) 
     return(
         <>
         <h2>this is the Instrument container</h2>
-        <KeyA/>
-        <KeyS/>
+        <ul>
+            {keyBoard}
+        </ul>
         <SongInput />
         </>
     )
