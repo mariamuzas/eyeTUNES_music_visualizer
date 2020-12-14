@@ -1,6 +1,6 @@
 const Visual =() => {
     return(
-        <h2>this is the Visual container</h2>
+        <h2>Visuals</h2>
     )
 }
 
