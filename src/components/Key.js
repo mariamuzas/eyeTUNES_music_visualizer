@@ -1,11 +1,11 @@
 import * as Tone from 'tone';
 
 
-const Key = ({individualKey, onKeyClick}) => {
+const Key = ({individualPad, onKeyClick}) => {
 
      return (
          <>
-            <li>{individualKey.keyPress}</li>
+            <li>{individualPad.keyPress}</li>
          </>
      )
 }

@@ -2,10 +2,10 @@ import Key from '../components/Key.js'
 import SongInput from '../components/SongInput.js'
 import { Tone } from "tone/build/esm/core/Tone"
 
-const Instrument = ({keys, onKeyClick, loaded}) => {
+const Instrument = ({pads, onKeyClick, loaded}) => {
 
-    const keyBoard = Object.keys(keys).map((key, i) => {
-        return (<Key key={i} individualKey={keys[key]} onKeyClick ={onKeyClick}> </Key>)
+    const keyBoard = Object.keys(pads).map((pad, i) => {
+        return (<Key key={i} individualPad={pads[pad]} onKeyClick ={onKeyClick}> </Key>)
     }) 
     
     return(

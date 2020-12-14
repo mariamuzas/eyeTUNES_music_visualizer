@@ -26,7 +26,7 @@ const Play =() => {
         <>
         <h1> This is the Play container</h1>
         <Visual />
-        <Instrument keys={keyMap} onKeyClick={playKey} />
+        <Instrument pads={keyMap} onKeyClick={playKey} />
         <button>Play/Pause</button>
         </>
     )
