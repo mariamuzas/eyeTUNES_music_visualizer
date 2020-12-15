@@ -29,16 +29,6 @@ const SongForm = ({onFormSubmit}) => {
         setComment("")
     }
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const titleToSubmit = title.trim()
- 
-    //     const updatedPlaylist = [...playlist, newSong]
-    //     // setPlaylist(updatedPlaylist)
-    //     setCurrentSong(newSong.songData)
-    //     setSong([])
-    // }
-
     return(
         <>
             <form onSubmit={handleSubmit}>

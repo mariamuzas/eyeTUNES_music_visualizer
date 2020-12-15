@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Play from './containers/Play.js';
 import SongService from './services/SongService';
+import UserPlaylist from './components/UserPlaylist.js'
 
 function App() {
 
@@ -29,10 +30,10 @@ if (!loaded) {
   return <p>Loading...</p>
 }
   return (
-    <p>
+    <>
       <Play playlist={playlist} addPlaylist={(musicItem) => addMusicItem(musicItem)}/>
-      {/* <p>{playlist[0].title}</p> */}
-    </p>
+      <UserPlaylist playlist={playlist}></UserPlaylist>
+    </>
   );
 }
 

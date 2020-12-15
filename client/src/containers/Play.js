@@ -10,7 +10,6 @@ const Play =({addPlaylist}) => {
     const [song, setSong] = useState([])
     const [currentSong, setCurrentSong] = useState([])
     const [lastKey, setLastKey] = useState("")
-    // const [dummyPlaylist, setDummyPlaylist] = useState([])
 
     const [playState, setPlayState] = useState(false)
     const [isPlayingSong, setIsPlayingSong] = useState(false)
@@ -54,10 +53,7 @@ const Play =({addPlaylist}) => {
         
         const newSong = {songData: song}
         const newMusicItem = {...formSong, songData:song}
-        // const updatedPlaylist = [...dummyPlaylist, newMusicItem] // until here updating dummy playlist 
         addPlaylist(newMusicItem)
-
-        // setDummyPlaylist(updatedPlaylist)
         setCurrentSong(newSong.songData)
         setSong([])
     }
@@ -96,19 +92,8 @@ const Play =({addPlaylist}) => {
             <h1> This is the Play container</h1>
             <Visual lastKey={lastKey} pads={keyMap} />
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
-            {/* <p>{playlist[0][title]}</p> */}
-            
             <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
         
-            {/* <form onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
-                    placeholder="title" 
-                    value={title}
-                    onChange={handleTitleChange} 
-                />
-                <input type="submit" value="POST" />
-            </form> */}
             <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
         </>
     )
