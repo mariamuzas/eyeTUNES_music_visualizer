@@ -6,27 +6,27 @@ import SongService from './services/SongService';
 function App() {
 
   const [playlist, setPlaylist] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   const fetchSongs = () => {
     console.log("getting songs info");
     SongService.getSongs()
         .then(data => setPlaylist(data))
+        .then(() => setLoaded(true))
 }
 
 useEffect(() => {
   fetchSongs();
 }, [])
 
-let test = null
 
-if (playlist.length) {
-  test = <p>{playlist[0].title}</p>
+if (!loaded) {
+  return <p>Loading...</p>
 }
-
   return (
     <p>
       <Play playlist={playlist} />
-      {test}
+      <p>{playlist[0].title}</p>
     </p>
   );
 }
