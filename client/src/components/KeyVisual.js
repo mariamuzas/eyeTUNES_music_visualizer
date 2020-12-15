@@ -34,13 +34,13 @@ const SquareVisualBig = styled(StyledKeyVisual)`
     z-index: 3;
 `
 
-const TriangleVisualBig = styled(StyledKeyVisual)`
-    width: 15px;
-    height: 15px;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 100px solid black;
-`
+// const TriangleVisualBig = styled(StyledKeyVisual)`
+//     width: 15px;
+//     height: 15px;
+//     border-left: 50px solid transparent;
+//     border-right: 50px solid transparent;
+//     border-bottom: 100px solid black;
+// `
 
 const KeyVisual = ({color, playState, padKey}) => {
 
@@ -82,8 +82,9 @@ const KeyVisual = ({color, playState, padKey}) => {
         <>
             <div className="animation-container">
                 <StyledKeyVisual color={color} playState={playState} className={`${padKey}-visual`}/>
+                {/* <StyledKeyVisual color={color} playState={playState} className={`${padKey}-visual`}/> */}
                 <SquareVisualBig color={color} playState={playState} className={`${padKey}-visual`}/>
-                <TriangleVisualBig color={color} playState={playState} className={`${padKey}-visual`}/>
+                {/* <TriangleVisualBig color={color} playState={playState} className={`${padKey}-visual`}/> */}
                 <SquareVisual color={color} playState={playState} className={`${padKey}-visual`}/>
             </div>
         </>

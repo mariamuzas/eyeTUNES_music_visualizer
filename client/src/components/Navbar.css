@@ -12,8 +12,7 @@ nav{
 .logo{
     display: block;
     padding: 3vh;
-    border: 2px dashed white;
-    
+    border: 2px solid white;
 }
 
 ul {
