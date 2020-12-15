@@ -3,14 +3,8 @@ import Instrument from '../containers/Instrument.js'
 import Visual from '../containers/Visual.js'
 import {useState, useEffect} from 'react'
 
-const Play =() => {
-
-    const [playlist, setPlaylist] = useState([
-        {
-            title: "SongOne", 
-            songData: ["a", "s", "s", "a","a", "s", "s", "a","a", "s", "s", "a","a", "s", "s", "a","a", "s", "s", "a",]
-        }
-    ])    
+const Play =({playlist}) => {
+   
     const [song, setSong] = useState([])
     const [currentSong, setCurrentSong] = useState([])
     const [lastKey, setLastKey] = useState("")
@@ -62,7 +56,7 @@ const Play =() => {
         const titleToSubmit = title.trim()
         const newSong = {title: titleToSubmit, songData: song}
         const updatedPlaylist = [...playlist, newSong]
-        setPlaylist(updatedPlaylist)
+        // setPlaylist(updatedPlaylist)
         setCurrentSong(newSong.songData)
         setSong([])
     }
@@ -101,6 +95,7 @@ const Play =() => {
             <h1> This is the Play container</h1>
             <Visual />
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
+            {/* <p>{playlist[0][title]}</p> */}
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
