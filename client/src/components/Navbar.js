@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import './Navbar.css';
 
 const Navbar = () => {
 
     return(
-        <>
+        <nav>
             <div className="logo">LOGO TO GO HERE!!!</div>
             <ul>
                 <li>
@@ -13,11 +14,8 @@ const Navbar = () => {
                 <li>
                     <Link to="/about">About</Link>
                 </li>
-                {/* <li>
-                    <Link to="/pricing">User</Link>
-                </li> */}
             </ul>
-        </>
+        </nav>
     );
 };
 

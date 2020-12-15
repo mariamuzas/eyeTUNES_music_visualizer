@@ -6,8 +6,8 @@
     justify-content: center;
     margin: 0px;
     display: grid;
-    grid-template-columns: repeat(9, 9vw);
-    grid-template-rows: repeat(3, 30px);
+    grid-template-columns: repeat(9, 3fr);
+    grid-template-rows: repeat(3, 1fr);
     list-style-type: none;
     border: 2px solid pink;
 }

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 let Pad = styled.li` 
-height: 5vh;
-width: 5vw;
+height: 6vh;
+width: 9vw;
 margin: auto;
 border: 2px solid white;
 color: white;
