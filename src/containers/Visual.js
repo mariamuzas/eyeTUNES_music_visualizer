@@ -13,10 +13,9 @@ const Visual =({lastKey, pads}) => {
 
 
     return(
-        <>
-            <h2>Visuals</h2>
+        <div className="visual-container">
             { keyVisuals }
-        </>
+        </div>
     )
 }
 

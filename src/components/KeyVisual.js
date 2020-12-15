@@ -10,14 +10,14 @@ const StyledKeyVisual = styled.div.attrs(props => {
         }
     }
 })`
-    position: relative;
+    position: centre;
     width: 100px;
     height: 100px;
     border-radius: 100%;
-    margin: 4px;
+    margin: auto;
+    margin-top: 10vh;
     display: block;
 `
-
 
 const KeyVisual = ({color, playState, padKey}) => {
 
@@ -27,16 +27,27 @@ const KeyVisual = ({color, playState, padKey}) => {
         setAnimation(anime({
             targets: `div.${padKey}-visual`,
             autoplay: false,
-            translateX:[
+            // translateX:[
+            //     {value: 200, duration: 375},
+            //     // {value: 0, duration: 350}
+            // ],
+            translateZ:[
                 {value: 200, duration: 375},
-                // {value: 0, duration: 350}
             ],
+            // keyframes: [
+            //     {translateY: -40},
+            //     {translateX: 700},
+            //     {translateY: 100},
+            //     {translateX: 0},
+            //     {translateY: 0}
+            // ],
+            scale: 8.0,
             opacity: [
                 {value: '0%', duration: 0},
-                {value: '100%', duration: 1},
-                {value: '0%', duration: 350}
+                {value: '100%', duration: 5},
+                {value: '0%', duration: 500}
             ],
-            easing: 'easeOutSine'
+            easing: 'linear'
         }))
     }, [])
 
