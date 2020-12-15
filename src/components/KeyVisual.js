@@ -36,7 +36,7 @@ const SquareVisualBig = styled(StyledKeyVisual)`
 //     height: 15px;
 //     border-left: 50px solid transparent;
 //     border-right: 50px solid transparent;
-//     border-bottom: 100px solid;
+//     border-bottom: 100px solid red;
 // `
 
 const KeyVisual = ({color, playState, padKey}) => {
