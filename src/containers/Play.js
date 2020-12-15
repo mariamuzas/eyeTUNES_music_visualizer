@@ -31,7 +31,7 @@ const Play =() => {
 
     // this useEffect saves an array of lastKeys played in the song state.
     useEffect(() => {
-        if(lastKey.length === 1 ){ // only if the song !isPlaying
+        if(!isPlayingSong && lastKey.length === 1 ){ // only if the song !isPlaying
             setSong([...song, lastKey]);
         }
     }, [lastKey])
