@@ -15,6 +15,11 @@ function App() {
         .then(() => setLoaded(true))
 }
 
+const addMusicItem = (musicItem) =>{
+  SongService.postSong(musicItem)
+  .then(setPlaylist([...playlist, musicItem]));
+}
+
 useEffect(() => {
   fetchSongs();
 }, [])
@@ -25,8 +30,8 @@ if (!loaded) {
 }
   return (
     <p>
-      <Play playlist={playlist} />
-      <p>{playlist[0].title}</p>
+      <Play playlist={playlist} addPlaylist={(musicItem) => addMusicItem(musicItem)}/>
+      {/* <p>{playlist[0].title}</p> */}
     </p>
   );
 }

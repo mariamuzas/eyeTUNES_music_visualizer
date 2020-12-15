@@ -1,14 +1,16 @@
 import * as Tone from 'tone'
 import Instrument from '../containers/Instrument.js'
+import SongForm from '../components/SongForm.js'
 import Visual from '../containers/Visual.js'
 import {useState, useEffect} from 'react'
 
-const Play =({playlist}) => {
+
+const Play =({addPlaylist}) => {
    
     const [song, setSong] = useState([])
     const [currentSong, setCurrentSong] = useState([])
     const [lastKey, setLastKey] = useState("")
-    const [title, setTitle] = useState("")
+    // const [dummyPlaylist, setDummyPlaylist] = useState([])
 
     const [playState, setPlayState] = useState(false)
     const [isPlayingSong, setIsPlayingSong] = useState(false)
@@ -31,9 +33,9 @@ const Play =({playlist}) => {
         document.addEventListener('keydown', ({ key }) => playKey(key))
     }, [])
 
-    // this useEffect saves an array of lastKeys played in the song state.
+    // this useEffect saves an array of lastKeys played in the songstate.
     useEffect(() => {
-        if(!isPlayingSong && lastKey.length === 1 ){ // only if the song !isPlaying
+        if(!isPlayingSong && lastKey.length === 1 ){ 
             setSong([...song, lastKey]);
         }
     }, [lastKey])
@@ -48,16 +50,14 @@ const Play =({playlist}) => {
         setTimeout(() => setLastKey(""), 250)
     }
 
-    const handleTitleChange = (event) => {
-        setTitle(event.target.value)
-    }
+    const addFormSong = (formSong) => {
+        
+        const newSong = {songData: song}
+        const newMusicItem = {...formSong, songData:song}
+        // const updatedPlaylist = [...dummyPlaylist, newMusicItem] // until here updating dummy playlist 
+        addPlaylist(newMusicItem)
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const titleToSubmit = title.trim()
-        const newSong = {title: titleToSubmit, songData: song}
-        const updatedPlaylist = [...playlist, newSong]
-        // setPlaylist(updatedPlaylist)
+        // setDummyPlaylist(updatedPlaylist)
         setCurrentSong(newSong.songData)
         setSong([])
     }
@@ -97,7 +97,10 @@ const Play =({playlist}) => {
             <Visual lastKey={lastKey} pads={keyMap} />
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
             {/* <p>{playlist[0][title]}</p> */}
-            <form onSubmit={handleSubmit}>
+            
+            <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
+        
+            {/* <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
                     placeholder="title" 
@@ -105,7 +108,7 @@ const Play =({playlist}) => {
                     onChange={handleTitleChange} 
                 />
                 <input type="submit" value="POST" />
-            </form>
+            </form> */}
             <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
         </>
     )
