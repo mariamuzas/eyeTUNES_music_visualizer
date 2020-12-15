@@ -12,6 +12,7 @@ const Play =() => {
         }
     ])    
     const [song, setSong] = useState([])
+    const [currentSong, setCurrentSong] = useState([])
     const [lastKey, setLastKey] = useState("")
     const [title, setTitle] = useState("")
 
@@ -22,7 +23,13 @@ const Play =() => {
     
     const [keyMap, setKeyMap] = useState({
         "a": {keyPress: "a", note: "C4", color: "red", shape: "circle", beat:"8n"},
-        "s": {keyPress: "s", note: "D4", color: "blue", shape: "circle", beat:"8n"}
+        "s": {keyPress: "s", note: "D4", color: "blue", shape: "circle", beat:"8n"},
+        "d": {keyPress: "d", note: "E4", color: "pink", shape: "circle", beat:"8n"},
+        "f": {keyPress: "f", note: "F4", color: "orange", shape: "circle", beat:"8n"},
+        "g": {keyPress: "g", note: "G4", color: "purple", shape: "circle", beat:"8n"},
+        "h": {keyPress: "h", note: "A4", color: "green", shape: "circle", beat:"8n"},
+        "j": {keyPress: "j", note: "B4", color: "yellow", shape: "circle", beat:"8n"},
+        "k": {keyPress: "k", note: "C5", color: "dodgerblue", shape: "circle", beat:"8n"}
     })
 
     useEffect(() => {
@@ -56,6 +63,7 @@ const Play =() => {
         const newSong = {title: titleToSubmit, songData: song}
         const updatedPlaylist = [...playlist, newSong]
         setPlaylist(updatedPlaylist)
+        setCurrentSong(newSong.songData)
         setSong([])
     }
 
@@ -75,12 +83,12 @@ const Play =() => {
 
     useEffect(() => {
         if (isPlayingSong && playState) {
-            replaySong(playlist[0].songData, placeInSong)
+            replaySong(currentSong, placeInSong)
         } else if (!playState) {
             clearTimeout(lastTimeout)
         } else if (playState) {
             setIsPlayingSong(true) 
-            replaySong(playlist[0].songData)
+            replaySong(currentSong)
         } 
     }, [playState])
 
