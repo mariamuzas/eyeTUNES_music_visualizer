@@ -13,6 +13,7 @@ const Play =() => {
 
     useEffect(() => {
         document.addEventListener('keydown', ({ key }) => playKey(key))
+        document.addEventListener('keydown', ({key}) => playAnimation(key))
         // setLoaded(true)
     }, [])
 
@@ -26,10 +27,16 @@ const Play =() => {
         setTimeout(() => setLastKey(""), 500)
     }
 
+    const playAnimation = function(key){
+        if (!Object.keys(keyMap).includes(key)) return;
+        // const {color, shape} = keyMap[key];
+        
+    }
+
     return(
         <>
         <h1> This is the Play container</h1>
-        <Visual />
+        <Visual lastKey={lastKey} pads={keyMap}/>
         <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
         <button>Play/Pause</button>
         </>
