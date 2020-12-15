@@ -13,7 +13,7 @@ const Play =() => {
 
     useEffect(() => {
         document.addEventListener('keydown', ({ key }) => playKey(key))
-        document.addEventListener('keydown', ({key}) => playAnimation(key))
+        // document.addEventListener('keydown', ({key}) => playAnimation(key))
         // setLoaded(true)
     }, [])
 
@@ -27,11 +27,11 @@ const Play =() => {
         setTimeout(() => setLastKey(""), 500)
     }
 
-    const playAnimation = function(key){
-        if (!Object.keys(keyMap).includes(key)) return;
-        // const {color, shape} = keyMap[key];
+    // const playAnimation = function(key){
+    //     if (!Object.keys(keyMap).includes(key)) return;
+    //     // const {color, shape} = keyMap[key];
         
-    }
+    // }
 
     return(
         <>

@@ -1,29 +1,21 @@
 import anime from 'animejs';
 import './Visual.css';
-// import styled from 'styled-components';
+import KeyVisual from '../components/KeyVisual'
+import {useState, useEffect} from 'react'
+import styled from 'styled-components';
 
 
-const Visual =() => {
+const Visual =({lastKey, pads}) => {
 
+    const keyVisuals = Object.values(pads).map(pad => (
+        <KeyVisual color={pad.color} playState={pad.keyPress === lastKey} padKey={pad.keyPress}/>
+    ))
 
-    const animation = anime({
-        targets: 'div.box',
-        translateX:[
-            {value: 200, duration: 500},
-            {value: 0, duration: 800}
-        ],
-        rotate: {
-            value: '1turn',
-            easing: 'easeInOutSine'
-        },
-        autoplay: true,
-        loop: true
-    })
 
     return(
         <>
-            <div className='box' ></div>
             <h2>Visuals</h2>
+            { keyVisuals }
         </>
     )
 }
