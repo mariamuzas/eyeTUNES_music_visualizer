@@ -17,10 +17,17 @@ useEffect(() => {
   fetchSongs();
 }, [])
 
+let test = null
+
+if (playlist.length) {
+  test = <p>{playlist[0].title}</p>
+}
+
   return (
-    <>
+    <p>
       <Play playlist={playlist} />
-    </>
+      {test}
+    </p>
   );
 }
 
