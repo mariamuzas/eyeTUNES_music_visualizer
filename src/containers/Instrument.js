@@ -1,6 +1,7 @@
 import Key from '../components/Key.js'
 import SongInput from '../components/SongInput.js'
 import { Tone } from "tone/build/esm/core/Tone"
+import './Instrument.css';
 
 const Instrument = ({pads, onKeyClick, loaded, lastKey}) => {
 
@@ -10,8 +11,8 @@ const Instrument = ({pads, onKeyClick, loaded, lastKey}) => {
     
     return(
         <>
-        <h2>this is the Instrument container</h2>
-        <ul>
+        {/* <h2>this is the Instrument container</h2> */}
+        <ul className="instrument-container">
             {keyBoard}
         </ul>
         <SongInput />

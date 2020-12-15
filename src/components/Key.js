@@ -3,9 +3,14 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 let Pad = styled.li` 
-height: 20vh;
-width: 20vw;
-margin: 5px;`
+height: 5vh;
+width: 5vw;
+margin: auto;
+border: 2px solid white;
+color: white;
+font-size: 20pt;
+text-align: center;
+`
 
 const Key = ({individualPad, onKeyClick, isLastPad}) => {
     

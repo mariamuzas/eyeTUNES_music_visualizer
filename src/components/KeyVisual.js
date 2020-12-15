@@ -6,18 +6,38 @@ const StyledKeyVisual = styled.div.attrs(props => {
     return {
         style:{
             // animationPlayState: (props.play) ? "running" : "paused",
-            backgroundColor: props.color
+            backgroundColor: props.color,
+            // backgroundImage: props.shape
+
         }
     }
 })`
     position: centre;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
     margin: auto;
     margin-top: 10vh;
-    display: block;
 `
+
+const SquareVisual = styled(StyledKeyVisual)`
+    width: 5px;
+    height: 5px;
+    border-radius: 0%;
+`
+const SquareVisualBig = styled(StyledKeyVisual)`
+    width: 10px;
+    height: 10px;
+    border-radius: 0%;
+`
+
+// const TriangleVisualBig = styled(StyledKeyVisual)`
+//     width: 15px;
+//     height: 15px;
+//     border-left: 50px solid transparent;
+//     border-right: 50px solid transparent;
+//     border-bottom: 100px solid;
+// `
 
 const KeyVisual = ({color, playState, padKey}) => {
 
@@ -27,27 +47,24 @@ const KeyVisual = ({color, playState, padKey}) => {
         setAnimation(anime({
             targets: `div.${padKey}-visual`,
             autoplay: false,
-            // translateX:[
-            //     {value: 200, duration: 375},
-            //     // {value: 0, duration: 350}
-            // ],
-            translateZ:[
-                {value: 200, duration: 375},
+            translateY:[
+                {value: 100, duration: 375},
+                // {value: 0, duration: 350}
             ],
-            // keyframes: [
-            //     {translateY: -40},
-            //     {translateX: 700},
-            //     {translateY: 100},
-            //     {translateX: 0},
-            //     {translateY: 0}
-            // ],
-            scale: 8.0,
+            translateX:[
+                {value: 0, duration: 375},
+                // {value: 0, duration: 350}
+            ],
+            translateZ:[
+                {value: 0, duration: 375},
+            ],
+            scale: [4, 10],
             opacity: [
                 {value: '0%', duration: 0},
-                {value: '100%', duration: 5},
+                {value: '100%', duration: 100},
                 {value: '0%', duration: 500}
             ],
-            easing: 'linear'
+            easing: 'easeOutBounce'
         }))
     }, [])
 
@@ -59,7 +76,13 @@ const KeyVisual = ({color, playState, padKey}) => {
     }, [playState])
 
     return(
-        <StyledKeyVisual color={color} playState={playState} className={`${padKey}-visual`}/>
+        <>
+            <StyledKeyVisual color={color} playState={playState} className={`${padKey}-visual`}/>
+            <SquareVisualBig color={color} playState={playState} className={`${padKey}-visual`}/>
+            {/* <TriangleVisualBig color={color} playState={playState} className={`${padKey}-visual`}/> */}
+            <SquareVisual color={color} playState={playState} className={`${padKey}-visual`}/>
+            
+        </>
     )
 }
 

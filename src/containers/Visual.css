@@ -6,7 +6,12 @@
     justify-content: center;
     margin: 0px;
     display: grid;
-    grid-template-columns: repeat(9, 10px);
-    grid-template-rows: repeat(3, 20px);
+    grid-template-columns: repeat(9, 10vw);
+    /* grid-template-rows: repeat(3, 20px); */
 }
 
+
+StyledPad{
+    display: inline-block;
+    margin-left: 2px;
+}

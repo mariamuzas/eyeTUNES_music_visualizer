@@ -1,0 +1,14 @@
+.instrument-container{
+    /* width: 100vw; */
+    height: 30vh;
+    background-color: black;
+    align-content: center;
+    justify-content: center;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: repeat(9, 9vw);
+    grid-template-rows: repeat(3, 30px);
+    list-style-type: none;
+    border: 2px solid pink;
+}
+
