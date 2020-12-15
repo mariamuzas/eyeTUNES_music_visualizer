@@ -8,12 +8,17 @@ const Play =() => {
     const [playlist, setPlaylist] = useState([
         {
             title: "SongOne", 
-            songData: ["a", "s", "s", "a"]
+            songData: ["a", "s", "s", "a","a", "s", "s", "a","a", "s", "s", "a","a", "s", "s", "a","a", "s", "s", "a",]
         }
     ])    
     const [song, setSong] = useState([])
     const [lastKey, setLastKey] = useState("")
     const [title, setTitle] = useState("")
+
+    const [playState, setPlayState] = useState(false)
+    const [isPlayingSong, setIsPlayingSong] = useState(false)
+    const [placeInSong, setPlaceInSong] = useState(0)
+    const [lastTimeout, setLastTimeout] = useState(null)
     
     const [keyMap, setKeyMap] = useState({
         "a": {keyPress: "a", note: "C4", color: "red", shape: "circle", beat:"8n"},
@@ -26,7 +31,7 @@ const Play =() => {
 
     // this useEffect saves an array of lastKeys played in the song state.
     useEffect(() => {
-        if(lastKey.length === 1){
+        if(lastKey.length === 1 ){ // only if the song !isPlaying
             setSong([...song, lastKey]);
         }
     }, [lastKey])
@@ -38,16 +43,9 @@ const Play =() => {
         const { note, beat } = keyMap[key]
         synth.triggerAttackRelease(note, beat)
         setLastKey(key)
-        setTimeout(() => setLastKey(""), 1000)
+        setTimeout(() => setLastKey(""), 250)
     }
 
-    // const replayKey = playlist[0].songData.forEach((key) => {
-    //    playKey(key)
-    //  }) 
-
-    // const replayPlaylist = () => {
-    //     setInterval(replayKey, 60000)
-    // }
     const handleTitleChange = (event) => {
         setTitle(event.target.value)
     }
@@ -61,36 +59,52 @@ const Play =() => {
         setSong([])
     }
 
-    // const seq = new Tone.Sequence((time, note) => {
-    //     synth.triggerAttackRelease(note, 0.1, time);
-        
-    //     // subdivisions are given as subarrays
-    // }, ["C4", ["E4", "D4", "E4"], "G4", ["A4", "G4"]]).start(0);
-    // Tone.Transport.start();
+    const replaySong = (song, index=0, time=350) => {
+        if (index >= song.length) {
+            setIsPlayingSong(false)
+            setPlayState(false)
+            return;
+        }
+
+        const currentKey = song[index]
+        playKey(currentKey)
+
+        setPlaceInSong(index + 1)
+        setLastTimeout(setTimeout(() => replaySong(song, index + 1), time))
+    }
+
+    useEffect(() => {
+        if (isPlayingSong && playState) {
+            replaySong(playlist[0].songData, placeInSong)
+        } else if (!playState) {
+            clearTimeout(lastTimeout)
+        } else if (playState) {
+            setIsPlayingSong(true) 
+            replaySong(playlist[0].songData)
+        } 
+    }, [playState])
+
+    const handlePauseResumeClick = (evt) => {
+        setPlayState((!isPlayingSong || !playState))
+    } 
 
     return(
         <>
-        <h1> This is the Play container</h1>
-        <Visual />
-        <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
-        <form onSubmit={handleSubmit}>
-            <input 
-                type="text" 
-                placeholder="title" 
-                value={title}
-                onChange={handleTitleChange} 
-            />
-            <input type="submit" value="POST" />
-        </form>
-        <button>Save song</button>
-        <button >Play/Pause</button>
+            <h1> This is the Play container</h1>
+            <Visual />
+            <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
+            <form onSubmit={handleSubmit}>
+                <input 
+                    type="text" 
+                    placeholder="title" 
+                    value={title}
+                    onChange={handleTitleChange} 
+                />
+                <input type="submit" value="POST" />
+            </form>
+            <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
         </>
     )
 }
 
 export default Play
-
-
-
-
-// i'm still here
