@@ -21,8 +21,8 @@ const Play =({playlist}) => {
         "d": {keyPress: "d", note: "E4", color: "yellow", shape: "circle", beat:"8n"},
         "f": {keyPress: "f", note: "F4", color: "green", shape: "circle", beat:"8n"},
         "g": {keyPress: "g", note: "G4", color: "antiquewhite", shape: "circle", beat:"8n"},
-        "h": {keyPress: "h", note: "A5", color: "violet", shape: "circle", beat:"8n"},
-        "j": {keyPress: "j", note: "B5", color: "greenyellow", shape: "circle", beat:"8n"},
+        "h": {keyPress: "h", note: "A4", color: "violet", shape: "circle", beat:"8n"},
+        "j": {keyPress: "j", note: "B4", color: "greenyellow", shape: "circle", beat:"8n"},
         "k": {keyPress: "k", note: "C5", color: "purple", shape: "circle", beat:"8n"},
         "l": {keyPress: "l", note: "D5", color: "lightcoral", shape: "circle", beat:"8n"}
     })
@@ -93,7 +93,7 @@ const Play =({playlist}) => {
 
     return(
         <>
-            <h1> This is the Play container</h1>
+            {/* <h1> This is the Play container</h1> */}
             <Visual lastKey={lastKey} pads={keyMap} />
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
             {/* <p>{playlist[0][title]}</p> */}

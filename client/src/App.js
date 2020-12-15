@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Play from './containers/Play.js';
+import Navbar from './components/Navbar.js';
+import About from './components/About.js';
 import SongService from './services/SongService';
 
 function App() {
@@ -24,10 +27,18 @@ if (!loaded) {
   return <p>Loading...</p>
 }
   return (
-    <p>
-      <Play playlist={playlist} />
-      <p>{playlist[0].title}</p>
-    </p>
+    
+      <Router>
+        <>
+          <Navbar/>
+          <Switch>
+            <Route exact path="/" component={Play} render={() => <Play playlist={playlist}/> }/>
+            <Route path="/about" component={About}/>
+            {/* <Route path="/user" component={Contact}/> */}
+          </Switch>
+        </>
+      </Router>
+    
   );
 }
 
