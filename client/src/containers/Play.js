@@ -19,6 +19,8 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     const [placeInSong, setPlaceInSong] = useState(0)
     const [lastTimeout, setLastTimeout] = useState(null)
     const [isPlayMode, setIsPlayMode] = useState(true)
+    const [isShowingForm, setIsShowingForm] = useState(false)
+    const [isMusicOn, setIsMusicOn] = useState(true)
 
     const [keyMap, setKeyMap] = useState({
         "a": {keyPress: "a", note: "C4", color: "FC2424", shape: "circle", beat:"8n"},
@@ -32,11 +34,17 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         "l": {keyPress: "l", note: "D5", color: "4D9DE0", shape: "circle", beat:"8n"}
     })
 
-    useEffect(() => {
-        document.addEventListener('keydown', ({ key }) => playKey(key))
-    }, [])
 
-    // this useEffect saves an array of lastKeys played in the songState.
+    useEffect(() => {
+        if(isMusicOn) {
+            document.addEventListener('keydown', ({ key }) => playKey(key))
+        } 
+        else if (!isMusicOn) {
+            document.removeEventListener('keydown', () => playKey())
+        }
+    }, [isMusicOn])
+
+    
     useEffect(() => {
         if(!isPlayingSong && lastKey.length === 1 ){ 
             setSong([...song, lastKey]);
@@ -53,39 +61,37 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         setTimeout(() => setLastKey(""), 250)
     }
 
-    const addFormSong = (formSong) => {
-        
-        const newSong = {songData: song}
-        const newMusicItem = {...formSong, songData:song}
-        addPlaylist(newMusicItem)
-        setCurrentSong(newSong.songData)
-        setSong([])
-    }
-
     const replaySong = (song, index=0, time=350) => {
         if (index >= song.length) {
             setIsPlayingSong(false)
             setPlayState(false)
             return;
         }
-
         const currentKey = song[index]
         playKey(currentKey)
-
         setPlaceInSong(index + 1)
         setLastTimeout(setTimeout(() => replaySong(song, index + 1), time))
     }
 
     useEffect(() => {
         if (isPlayingSong && playState) {
-            replaySong(currentSong, placeInSong)
+            replaySong(song, placeInSong)
         } else if (!playState) {
             clearTimeout(lastTimeout)
         } else if (playState) {
             setIsPlayingSong(true) 
-            replaySong(currentSong)
+            replaySong(song)
         } 
     }, [playState])
+
+    const addFormSong = (formSong) => {
+        const newSong = {songData: song}
+        const newMusicItem = {...formSong, songData:song}
+        addPlaylist(newMusicItem)
+        setCurrentSong(newSong.songData)
+        setSong([])
+        setIsMusicOn(true)
+    }
 
     const handlePauseResumeClick = (evt) => {
         setPlayState((!isPlayingSong || !playState))
@@ -99,25 +105,40 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         isPlayMode ? setIsPlayMode(false) : setIsPlayMode(true)
     }
 
+    const handleSaveForm = () => {
+        isShowingForm ? setIsShowingForm(false) : setIsShowingForm(true)
+        setIsMusicOn(false)
+    }
+
     const Mode = () => {
         if (isPlayMode) {
           return (
-          <>
-          <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
-          <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
-          <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
-          </>
+            <>
+            <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
+            <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
+            <button onClick={handleSaveForm}>ADD COMMENTS AND SAFE</button>
+            
+            </>
           )
         }
         return  <UserPlaylist playlist={playlist}  onDeleteSubmit={onDeleteSubmit} onReplaySaveSong={(data)=>replaySavedSong(data)} ></UserPlaylist>
-        
       };
+    
+    const FormMode = () => {
+        if (isShowingForm) {
+            return (
+                 <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
+            )
+        }
+        return null;
+    }
+
     return(
         <>
-            {/* <h1> This is the Play container</h1> */}
             <Visual lastKey={lastKey} pads={keyMap} />
             <button onClick={handleSwitchMode}>{isPlayMode ? "Show your playlist" : "Show keyboard"} </button>          
             <Mode></Mode>
+            <FormMode></FormMode>
         </>
     )
 }

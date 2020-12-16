@@ -1,11 +1,14 @@
 import {useState} from 'react';
-import React from 'react'
 
-const SongForm = ({onFormSubmit}) => {
+const SongForm = ({onFormSubmit, keys}) => {
 
     const [title, setTitle] = useState("")
     const [comment, setComment] = useState("")
-    const [object, setObject] = useState([])
+    const [newkeys, setNewKeys] = ([keys])
+
+    // const settingkeys = () => {
+    //     setNewKeys(keys)
+    // }
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value)
