@@ -3,6 +3,7 @@ import anime, { random } from 'animejs';
 import './KeyVisual.css'
 import { useState, useEffect } from 'react';
 import invert from 'invert-color'
+import React from 'react'
 
 const StyledKeyVisual = styled.div.attrs(props => {
     return {
@@ -56,7 +57,6 @@ const directionalTranslates = [
         y: 1
     },
 ]
-
 
 const KeyVisual = ({color, playState, padKey}) => {
 

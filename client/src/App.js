@@ -7,41 +7,52 @@ import About from './components/About.js';
 import Footer from './components/Footer/Footer.js';
 import SongService from './services/SongService';
 
-function App() {
 
+function App() {
+  
   const [playlist, setPlaylist] = useState([]);
   const [loaded, setLoaded] = useState(false);
-
+  
   const fetchSongs = () => {
     console.log("getting songs info");
     SongService.getSongs()
-        .then(data => setPlaylist(data))
-        .then(() => setLoaded(true))
-}
+    .then(data => setPlaylist(data))
+    .then(() => setLoaded(true))
+  }
+  
+  const addMusicItem = (musicItem) =>{
+    SongService.postSong(musicItem)
+    .then(setPlaylist([...playlist, musicItem]));
+  }
+  
+  const deleteById = (id) => {
+    SongService.deleteSong(id)
+      .then(fetchSongs)
+  }
+  
+  useEffect(() => {
+    fetchSongs();
+  }, [])
+  
+  
+  if (!loaded) {
+    return <p>Loading...</p>
+  }
 
-useEffect(() => {
-  fetchSongs();
-}, [])
-
-
-if (!loaded) {
-  return <p>Loading...</p>
-}
   return (
-    
       <Router>
         <>
           <Navbar/>
           <Switch>
-            <Route exact path="/" component={Play} render={() => <Play playlist={playlist}/> }/>
+            <Route exact path="/" render={() => <Play playlist={playlist} addPlaylist={(musicItem) => addMusicItem(musicItem)}  onDeleteSubmit={deleteById}/>} />
             <Route path="/about" component={About}/>
             {/* <Route path="/user" component={User}/> */}
           </Switch>
           <Footer />
         </>
       </Router>
-    
   );
 }
-
+  
 export default App;
+  

@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3001/api/songs'
+const baseURL = 'http://localhost:3001/api/songs/'
 
 export default {
     getSongs() {
