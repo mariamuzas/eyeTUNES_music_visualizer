@@ -3,6 +3,7 @@ import Instrument from './Instrument.js'
 import Visual from './Visual.js'
 import {useState, useEffect} from 'react'
 
+
 const Play =({playlist}) => {
    
     const [song, setSong] = useState([])
@@ -16,15 +17,15 @@ const Play =({playlist}) => {
     const [lastTimeout, setLastTimeout] = useState(null)
     
     const [keyMap, setKeyMap] = useState({
-        "a": {keyPress: "a", note: "C4", color1: "FC2424", color2: "FC2424", shape: "circle", beat:"8n"},
-        "s": {keyPress: "s", note: "D4", color1: "45B69C", color2: "45B69C", shape: "circle", beat:"8n"},
-        "d": {keyPress: "d", note: "E4", color1: "FF8C42", color2: "FF8C42", shape: "circle", beat:"8n"},
-        "f": {keyPress: "f", note: "F4", color1: "E4FF1A", color2: "E4FF1A", shape: "circle", beat:"8n"},
-        "g": {keyPress: "g", note: "G4", color1: "6EEB83", color2: "6EEB83", shape: "circle", beat:"8n"},
-        "h": {keyPress: "h", note: "A4", color1: "C8A2C8", color2: "C8A2C8", shape: "circle", beat:"8n"},
-        "j": {keyPress: "j", note: "B4", color1: "6AB547", color2: "6AB547", shape: "circle", beat:"8n"},
-        "k": {keyPress: "k", note: "C5", color1: "EC058E", color2: "EC058E", shape: "circle", beat:"8n"},
-        "l": {keyPress: "l", note: "D5", color1: "4D9DE0", color2: "4D9DE0", shape: "circle", beat:"8n"}
+        "a": {keyPress: "a", note: "C4", color: "FC2424", shape: "circle", beat:"8n"},
+        "s": {keyPress: "s", note: "D4", color: "45B69C", shape: "circle", beat:"8n"},
+        "d": {keyPress: "d", note: "E4", color: "FF8C42", shape: "circle", beat:"8n"},
+        "f": {keyPress: "f", note: "F4", color: "E4FF1A", shape: "circle", beat:"8n"},
+        "g": {keyPress: "g", note: "G4", color: "6EEB83", shape: "circle", beat:"8n"},
+        "h": {keyPress: "h", note: "A4", color: "C8A2C8", shape: "circle", beat:"8n"},
+        "j": {keyPress: "j", note: "B4", color: "6AB547", shape: "circle", beat:"8n"},
+        "k": {keyPress: "k", note: "C5", color: "EC058E", shape: "circle", beat:"8n"},
+        "l": {keyPress: "l", note: "D5", color: "4D9DE0", shape: "circle", beat:"8n"}
     })
 
     useEffect(() => {

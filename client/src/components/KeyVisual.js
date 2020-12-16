@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import anime, { random } from 'animejs';
 import './KeyVisual.css'
 import { useState, useEffect } from 'react';
+import invert from 'invert-color'
 
 const StyledKeyVisual = styled.div.attrs(props => {
     return {
         style:{
-            backgroundColor: '#'+props.color,
+            backgroundColor: '#'+props.color
         }
     }
 })`

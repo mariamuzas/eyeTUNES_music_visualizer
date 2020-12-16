@@ -26,13 +26,12 @@ const Key = ({individualPad, onKeyClick, isLastPad}) => {
     if (isLastPad) {
         StyledPad = styled(Pad).attrs(props => ({
             style: {
-                backgroundColor: props.color
+                backgroundColor: '#'+props.color
             }
         }))``
             
     }
-    console.log(individualPad.keyPress)
-    console.log(individualPad.color)
+   
     return (
         <div onClick={onKeyClick}>
             <StyledPad color={individualPad.color}>{individualPad.keyPress}</StyledPad>
@@ -40,4 +39,4 @@ const Key = ({individualPad, onKeyClick, isLastPad}) => {
     )
 }
     
-    export default Key
+export default Key

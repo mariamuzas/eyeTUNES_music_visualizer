@@ -11,11 +11,10 @@ const Instrument = ({pads, onKeyClick, loaded, lastKey}) => {
     
     return(
         <>
-        {/* <h2>this is the Instrument container</h2> */}
-        <ul className="instrument-container">
-            {keyBoard}
-        </ul>
-        <SongInput />
+            <ul className="instrument-container">
+                {keyBoard}
+            </ul>
+            <SongInput />
         </>
     )
 }
