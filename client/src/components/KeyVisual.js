@@ -1,91 +1,117 @@
 import styled from 'styled-components';
-import anime from 'animejs';
+import anime, { random } from 'animejs';
+import './KeyVisual.css'
 import { useState, useEffect } from 'react';
 
 const StyledKeyVisual = styled.div.attrs(props => {
     return {
         style:{
-            // animationPlayState: (props.play) ? "running" : "paused",
             backgroundColor: props.color,
-            // backgroundImage: props.shape
-
         }
     }
 })`
-    position: centre;
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     border-radius: 100%;
     margin: auto;
     margin-top: 10vh;
     z-index: 1;
+    grid-area: dot;
 `
 
-const SquareVisual = styled(StyledKeyVisual)`
-    width: 5px;
-    height: 5px;
-    border-radius: 0%;
-    z-index: 2;
-`
-const SquareVisualBig = styled(StyledKeyVisual)`
-    width: 10px;
-    height: 10px;
-    border-radius: 0%;
-    z-index: 3;
-`
+const distance = 100;
+const variance = 100;
+const directionalTranslates = [
+    {
+        x: 0,
+        y: 1
+    },
+    {
+        x: 1,
+        y: 1
+    },
+    {
+        x: 1,
+        y: 0
+    },
+    {
+        x: 1,
+        y: -1
+    },
+    {
+        x: 0,
+        y: -1
+    },
+    {
+        x: -1,
+        y: -1
+    },
+    {
+        x: -1,
+        y: 0
+    },
+    {
+        x: -1,
+        y: 1
+    },
+]
 
-// const TriangleVisualBig = styled(StyledKeyVisual)`
-//     width: 15px;
-//     height: 15px;
-//     border-left: 50px solid transparent;
-//     border-right: 50px solid transparent;
-//     border-bottom: 100px solid black;
-// `
 
 const KeyVisual = ({color, playState, padKey}) => {
 
-    const [animation, setAnimation] = useState(null)
+    const [animations, setAnimations] = useState(null)
+    const [circles, setCircles] = useState([])
 
-    useEffect(()=> {
-        setAnimation(anime({
-            targets: `div.${padKey}-visual`,
-            autoplay: false,
-            translateY:[
-                {value: 100, duration: 375},
-                // {value: 0, duration: 350}
-            ],
-            translateX:[
-                {value: 0, duration: 375},
-                // {value: 0, duration: 350}
-            ],
-            translateZ:[
-                {value: 0, duration: 375},
-            ],
-            scale: [4, 10],
-            opacity: [
-                {value: '0%', duration: 0},
-                {value: '100%', duration: 100},
-                {value: '0%', duration: 500}
-            ],
-            easing: 'easeOutBounce'
-        }))
-    }, [])
+    const createCircles = () => {
+        let newCircles = []
+        directionalTranslates.forEach((translation, i) => {
+            newCircles = [...newCircles, <StyledKeyVisual color={color} playState={playState} className={`${padKey}-visual-${i}`}/>]
+        })
+        setCircles(newCircles)
+    }
 
     useEffect(() => {
-        if (!animation) return;
+        let newAnimations = []
+        directionalTranslates.forEach((translation, i) => {
+            newAnimations = [...newAnimations, anime({
+                targets: `div.${padKey}-visual-${i}`,
+                autoplay: false,
+                translateY:[
+                    {value: (translation.y * (distance + Math.floor(Math.random() * variance))), duration: 375},
+                ],
+                translateX:[
+                    {value: (translation.x * (distance + Math.floor(Math.random() * variance))), duration: 375}
+                ],
+                scale: [1, 7],
+                opacity: [
+                    {value: '0%', duration: 0},
+                    {value: '100%', duration: 75},
+                    {value: '0%', duration: 375}
+                ],
+                easing: 'easeOutBounce'
+            })]
+        })
+        setAnimations(newAnimations)
+    }, [circles])
+
+    useEffect(() => {
         if (playState) {
-            animation.play()
+            console.log(animations)
+            animations.forEach(animation => {
+                animation.restart()
+                animation.play()    
+            })
         }
     }, [playState])
 
+    useEffect(() =>{
+        createCircles()
+    }, [])
+
     return(
         <>
-            <div className="animation-container">
-                <StyledKeyVisual color={color} playState={playState} className={`${padKey}-visual`}/>
-                {/* <StyledKeyVisual color={color} playState={playState} className={`${padKey}-visual`}/> */}
-                <SquareVisualBig color={color} playState={playState} className={`${padKey}-visual`}/>
-                {/* <TriangleVisualBig color={color} playState={playState} className={`${padKey}-visual`}/> */}
-                <SquareVisual color={color} playState={playState} className={`${padKey}-visual`}/>
+            <div className="animation-container fireworks">
+                {circles}
             </div>
         </>
     )
