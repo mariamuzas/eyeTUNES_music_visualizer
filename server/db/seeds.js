@@ -1,5 +1,3 @@
-const { Db } = require("mongodb");
-
 use musiclist;
 db.dropdatabase();
 
