@@ -1,6 +1,6 @@
 import * as Tone from 'tone'
-import Instrument from '../containers/Instrument.js'
-import Visual from '../containers/Visual.js'
+import Instrument from './Instrument.js'
+import Visual from './Visual.js'
 import {useState, useEffect} from 'react'
 
 const Play =({playlist}) => {

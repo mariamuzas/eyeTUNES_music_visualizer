@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Play from './containers/Play.js';
-import Navbar from './components/Navbar.js';
+import Navbar from './components/Navbar/Navbar.js';
 import About from './components/About.js';
+import Footer from './components/Footer/Footer.js';
 import SongService from './services/SongService';
 
 function App() {
@@ -36,6 +37,7 @@ if (!loaded) {
             <Route path="/about" component={About}/>
             {/* <Route path="/user" component={Contact}/> */}
           </Switch>
+          <Footer />
         </>
       </Router>
     

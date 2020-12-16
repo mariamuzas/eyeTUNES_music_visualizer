@@ -1,0 +1,11 @@
+footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.block-colour{
+    background-color: chartreuse;
+    padding: 3px;
+}
