@@ -35,7 +35,7 @@ if (!loaded) {
           <Switch>
             <Route exact path="/" component={Play} render={() => <Play playlist={playlist}/> }/>
             <Route path="/about" component={About}/>
-            {/* <Route path="/user" component={Contact}/> */}
+            {/* <Route path="/user" component={User}/> */}
           </Switch>
           <Footer />
         </>
