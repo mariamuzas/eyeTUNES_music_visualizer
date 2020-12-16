@@ -92,12 +92,16 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit5}) => {
         onDeleteSubmit5 (id)
     }
 
+    const replaySavedSong = (data) => {
+        replaySong(data, 0, 350)
+    }
+
     return(
         <>
             <h1> This is the Play container</h1>
             <Visual lastKey={lastKey} pads={keyMap} />
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
-            <UserPlaylist playlist={playlist}  onDeleteSubmit3={(id) => onDeleteSubmit4(id)} ></UserPlaylist>
+            <UserPlaylist playlist={playlist}  onDeleteSubmit3={(id)=>onDeleteSubmit4(id)} onReplaySaveSong2={(data)=>replaySavedSong(data)} ></UserPlaylist>
             
             <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
 
