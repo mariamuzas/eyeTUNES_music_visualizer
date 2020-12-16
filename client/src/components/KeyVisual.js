@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 const StyledKeyVisual = styled.div.attrs(props => {
     return {
         style:{
-            backgroundColor: props.color,
+            backgroundColor: '#'+props.color,
         }
     }
 })`
@@ -82,7 +82,7 @@ const KeyVisual = ({color, playState, padKey}) => {
                 translateX:[
                     {value: (translation.x * (distance + Math.floor(Math.random() * variance))), duration: 375}
                 ],
-                scale: [1, 7],
+                scale: [1, 6],
                 opacity: [
                     {value: '0%', duration: 0},
                     {value: '100%', duration: 75},

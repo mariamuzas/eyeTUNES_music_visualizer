@@ -16,15 +16,15 @@ const Play =({playlist}) => {
     const [lastTimeout, setLastTimeout] = useState(null)
     
     const [keyMap, setKeyMap] = useState({
-        "a": {keyPress: "a", note: "C4", color: "red", shape: "50, 160 55, 180 70, 180 60, 190 65, 205 50, 195 35, 205 40, 190 30, 180 45, 180", beat:"8n"},
-        "s": {keyPress: "s", note: "D4", color: "blue", shape: "circle", beat:"8n"},
-        "d": {keyPress: "d", note: "E4", color: "yellow", shape: "circle", beat:"8n"},
-        "f": {keyPress: "f", note: "F4", color: "green", shape: "circle", beat:"8n"},
-        "g": {keyPress: "g", note: "G4", color: "antiquewhite", shape: "circle", beat:"8n"},
-        "h": {keyPress: "h", note: "A4", color: "violet", shape: "circle", beat:"8n"},
-        "j": {keyPress: "j", note: "B4", color: "greenyellow", shape: "circle", beat:"8n"},
-        "k": {keyPress: "k", note: "C5", color: "purple", shape: "circle", beat:"8n"},
-        "l": {keyPress: "l", note: "D5", color: "lightcoral", shape: "circle", beat:"8n"}
+        "a": {keyPress: "a", note: "C4", color1: "FC2424", color2: "FC2424", shape: "circle", beat:"8n"},
+        "s": {keyPress: "s", note: "D4", color1: "45B69C", color2: "45B69C", shape: "circle", beat:"8n"},
+        "d": {keyPress: "d", note: "E4", color1: "FF8C42", color2: "FF8C42", shape: "circle", beat:"8n"},
+        "f": {keyPress: "f", note: "F4", color1: "E4FF1A", color2: "E4FF1A", shape: "circle", beat:"8n"},
+        "g": {keyPress: "g", note: "G4", color1: "6EEB83", color2: "6EEB83", shape: "circle", beat:"8n"},
+        "h": {keyPress: "h", note: "A4", color1: "C8A2C8", color2: "C8A2C8", shape: "circle", beat:"8n"},
+        "j": {keyPress: "j", note: "B4", color1: "6AB547", color2: "6AB547", shape: "circle", beat:"8n"},
+        "k": {keyPress: "k", note: "C5", color1: "EC058E", color2: "EC058E", shape: "circle", beat:"8n"},
+        "l": {keyPress: "l", note: "D5", color1: "4D9DE0", color2: "4D9DE0", shape: "circle", beat:"8n"}
     })
 
     useEffect(() => {
