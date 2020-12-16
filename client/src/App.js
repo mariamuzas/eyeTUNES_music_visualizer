@@ -21,17 +21,32 @@ const addMusicItem = (musicItem) =>{
   .then(setPlaylist([...playlist, musicItem]));
 }
 
+const deleteById = (id) => {
+  console.log("Delete by ID speaking")
+  console.log(id)
+  SongService.deleteSong(id)
+  .then(() => {
+    const index = playlist.findIndex(song => song._id === id);
+    playlist.splice(index, 1);
+  })
+}
+
 useEffect(() => {
   fetchSongs();
-}, [])
+}, [playlist])
 
+   // SightingService.deleteSighting(id)
+    // .then(() => {
+    //   const index = this.sightings.findIndex(sighting => sighting._id === id);
+    //   this.sightings.splice(index, 1);
+    // });
 
 if (!loaded) {
   return <p>Loading...</p>
 }
   return (
     <>
-      <Play playlist={playlist} addPlaylist={(musicItem) => addMusicItem(musicItem)}/>
+      <Play playlist={playlist} addPlaylist={(musicItem) => addMusicItem(musicItem)}  onDeleteSubmit5 = {(id) => deleteById(id)}/>
     </>
   );
 }

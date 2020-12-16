@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react'
 import UserPlaylist from '../components/UserPlaylist.js'
 
 
-const Play =({addPlaylist, playlist}) => {
+const Play =({addPlaylist, playlist,  onDeleteSubmit5}) => {
    
     const [song, setSong] = useState([])
     const [currentSong, setCurrentSong] = useState([])
@@ -88,12 +88,17 @@ const Play =({addPlaylist, playlist}) => {
         setPlayState((!isPlayingSong || !playState))
     } 
 
+    const onDeleteSubmit4 = (id) => {
+        onDeleteSubmit5 (id)
+    }
+
     return(
         <>
             <h1> This is the Play container</h1>
             <Visual lastKey={lastKey} pads={keyMap} />
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
-            <UserPlaylist playlist={playlist}></UserPlaylist>
+            <UserPlaylist playlist={playlist}  onDeleteSubmit3={(id) => onDeleteSubmit4(id)} ></UserPlaylist>
+            
             <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
 
             <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
