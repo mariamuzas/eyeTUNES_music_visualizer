@@ -1,9 +1,9 @@
 import SongService from '../services/SongService.js'
 
-const Song = ({title, comment, id, onDeleteSubmit1, data, onReplaySaveSong}) => {
+const Song = ({title, comment, id, onDeleteSubmit, data, onReplaySaveSong}) => {
 
     const handleDelete = () => {
-        onDeleteSubmit1(id)
+        onDeleteSubmit(id)
     }
 
     const handleReplay= () => {

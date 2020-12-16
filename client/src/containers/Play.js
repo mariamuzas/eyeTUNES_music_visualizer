@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react'
 import UserPlaylist from '../components/UserPlaylist.js'
 
 
-const Play =({addPlaylist, playlist,  onDeleteSubmit5}) => {
+const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
    
     const [song, setSong] = useState([])
     const [currentSong, setCurrentSong] = useState([])
@@ -89,10 +89,6 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit5}) => {
         setPlayState((!isPlayingSong || !playState))
     } 
 
-    const onDeleteSubmit4 = (id) => {
-        onDeleteSubmit5 (id)
-    }
-
     const replaySavedSong = (data) => {
         replaySong(data, 0, 350)
     }
@@ -107,7 +103,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit5}) => {
             <Visual lastKey={lastKey} pads={keyMap} />
             <button onClick={handleSwitchMode}>{isPlayMode ? "Show your playlist" : "Show keyboard"} </button>
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
-            <UserPlaylist playlist={playlist}  onDeleteSubmit3={(id)=>onDeleteSubmit4(id)} onReplaySaveSong2={(data)=>replaySavedSong(data)} ></UserPlaylist>
+            <UserPlaylist playlist={playlist}  onDeleteSubmit={onDeleteSubmit} onReplaySaveSong={(data)=>replaySavedSong(data)} ></UserPlaylist>
             
             <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
 
