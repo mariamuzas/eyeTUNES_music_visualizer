@@ -22,8 +22,6 @@ function App() {
   }
   
   const deleteById = (id) => {
-    console.log("Delete by ID speaking")
-    console.log(id)
     SongService.deleteSong(id)
       .then(fetchSongs)
   }
@@ -32,11 +30,6 @@ function App() {
     fetchSongs();
   }, [])
   
-  // SightingService.deleteSighting(id)
-  // .then(() => {
-  //   const index = this.sightings.findIndex(sighting => sighting._id === id);
-  //   this.sightings.splice(index, 1);
-  // });
   
   if (!loaded) {
     return <p>Loading...</p>

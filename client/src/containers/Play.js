@@ -103,6 +103,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
           <>
           <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
           <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
+          <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
           </>
           )
         }
@@ -115,7 +116,6 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             <Visual lastKey={lastKey} pads={keyMap} />
             <button onClick={handleSwitchMode}>{isPlayMode ? "Show your playlist" : "Show keyboard"} </button>          
             <Mode></Mode>
-            <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
         </>
     )
 }
