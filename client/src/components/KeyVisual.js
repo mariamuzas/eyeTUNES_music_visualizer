@@ -11,8 +11,8 @@ const StyledKeyVisual = styled.div.attrs(props => {
         }
     }
 })`
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 100%;
     margin: auto;
     margin-top: 10vh;
@@ -21,7 +21,7 @@ const StyledKeyVisual = styled.div.attrs(props => {
 `
 
 const distance = 100;
-const variance = 100;
+const variance = 80;
 const directionalTranslates = [
     {
         x: 0,
@@ -77,16 +77,20 @@ const KeyVisual = ({color, playState, padKey}) => {
             newAnimations = [...newAnimations, anime({
                 targets: `div.${padKey}-visual-${i}`,
                 autoplay: false,
+                backgroundColor: invert('#'+color).padStart(6,"0"),
+                borderRadius: '20%',
                 translateY:[
-                    {value: (translation.y * (distance + Math.floor(Math.random() * variance))), duration: 375},
+                    {value: (translation.y * (distance + Math.floor(Math.random() * variance))), duration: 545},
                 ],
                 translateX:[
-                    {value: (translation.x * (distance + Math.floor(Math.random() * variance))), duration: 375}
+                    {value: (translation.x * (distance + Math.floor(Math.random() * variance))), duration: 545}
                 ],
                 scale: [1, 6],
                 opacity: [
                     {value: '0%', duration: 0},
-                    {value: '100%', duration: 75},
+                    {value: '100%', duration: 90},
+                    {value: '80%', duration: 50},
+                    {value: '70%', duration: 30},
                     {value: '0%', duration: 375}
                 ],
                 easing: 'easeOutBounce'
