@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Play from './containers/Play.js';
 import SongService from './services/SongService';
-import UserPlaylist from './components/UserPlaylist.js'
+
 
 function App() {
 
@@ -32,7 +32,6 @@ if (!loaded) {
   return (
     <>
       <Play playlist={playlist} addPlaylist={(musicItem) => addMusicItem(musicItem)}/>
-      <UserPlaylist playlist={playlist}></UserPlaylist>
     </>
   );
 }

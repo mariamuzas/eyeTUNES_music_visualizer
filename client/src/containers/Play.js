@@ -3,9 +3,10 @@ import Instrument from '../containers/Instrument.js'
 import SongForm from '../components/SongForm.js'
 import Visual from '../containers/Visual.js'
 import {useState, useEffect} from 'react'
+import UserPlaylist from '../components/UserPlaylist.js'
 
 
-const Play =({addPlaylist}) => {
+const Play =({addPlaylist, playlist}) => {
    
     const [song, setSong] = useState([])
     const [currentSong, setCurrentSong] = useState([])
@@ -32,7 +33,7 @@ const Play =({addPlaylist}) => {
         document.addEventListener('keydown', ({ key }) => playKey(key))
     }, [])
 
-    // this useEffect saves an array of lastKeys played in the songstate.
+    // this useEffect saves an array of lastKeys played in the songState.
     useEffect(() => {
         if(!isPlayingSong && lastKey.length === 1 ){ 
             setSong([...song, lastKey]);
@@ -92,8 +93,9 @@ const Play =({addPlaylist}) => {
             <h1> This is the Play container</h1>
             <Visual lastKey={lastKey} pads={keyMap} />
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
+            <UserPlaylist playlist={playlist}></UserPlaylist>
             <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
-        
+
             <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
         </>
     )
