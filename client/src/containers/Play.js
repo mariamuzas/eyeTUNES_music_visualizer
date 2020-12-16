@@ -110,6 +110,10 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         setIsMusicOn(false)
     }
 
+    const songText = () => {
+        return song.toString()
+    }
+
     const Mode = () => {
         if (isPlayMode) {
           return (
@@ -117,7 +121,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
             <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
             <button onClick={handleSaveForm}>ADD COMMENTS AND SAFE</button>
-            
+            <p>Text: {songText()}</p>
             </>
           )
         }
