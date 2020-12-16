@@ -16,7 +16,8 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit5}) => {
     const [isPlayingSong, setIsPlayingSong] = useState(false)
     const [placeInSong, setPlaceInSong] = useState(0)
     const [lastTimeout, setLastTimeout] = useState(null)
-    
+    const [isPlayMode, setIsPlayMode] = useState(true)
+
     const [keyMap, setKeyMap] = useState({
         "a": {keyPress: "a", note: "C4", color: "red", shape: "50, 160 55, 180 70, 180 60, 190 65, 205 50, 195 35, 205 40, 190 30, 180 45, 180", beat:"8n"},
         "s": {keyPress: "s", note: "D4", color: "blue", shape: "circle", beat:"8n"},
@@ -96,10 +97,15 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit5}) => {
         replaySong(data, 0, 350)
     }
 
+    const handleSwitchMode = () => {
+        isPlayMode ? setIsPlayMode(false) : setIsPlayMode(true)
+    }
+
     return(
         <>
             <h1> This is the Play container</h1>
             <Visual lastKey={lastKey} pads={keyMap} />
+            <button onClick={handleSwitchMode}>{isPlayMode ? "Show your playlist" : "Show keyboard"} </button>
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
             <UserPlaylist playlist={playlist}  onDeleteSubmit3={(id)=>onDeleteSubmit4(id)} onReplaySaveSong2={(data)=>replaySavedSong(data)} ></UserPlaylist>
             
