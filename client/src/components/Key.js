@@ -27,9 +27,6 @@ const Key = ({individualPad, onKeyClick, isLastPad}) => {
     
     const [currentColour, setCurrentColour] = useState(false);
     
-    
-    console.log(individualPad.keyPress)
-    console.log(individualPad.color)
     return (
         <div onClick={onKeyClick}>
             <StyledPad color={individualPad.color} isLastPad={isLastPad}>{individualPad.keyPress}</StyledPad>

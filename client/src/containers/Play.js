@@ -97,16 +97,24 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         isPlayMode ? setIsPlayMode(false) : setIsPlayMode(true)
     }
 
+    const Mode = () => {
+        if (isPlayMode) {
+          return (
+          <>
+          <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
+          <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
+          </>
+          )
+        }
+        return  <UserPlaylist playlist={playlist}  onDeleteSubmit={onDeleteSubmit} onReplaySaveSong={(data)=>replaySavedSong(data)} ></UserPlaylist>
+        
+      };
     return(
         <>
             <h1> This is the Play container</h1>
             <Visual lastKey={lastKey} pads={keyMap} />
-            <button onClick={handleSwitchMode}>{isPlayMode ? "Show your playlist" : "Show keyboard"} </button>
-            <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
-            <UserPlaylist playlist={playlist}  onDeleteSubmit={onDeleteSubmit} onReplaySaveSong={(data)=>replaySavedSong(data)} ></UserPlaylist>
-            
-            <SongForm onFormSubmit= {(songForm) => addFormSong(songForm)}></SongForm>
-
+            <button onClick={handleSwitchMode}>{isPlayMode ? "Show your playlist" : "Show keyboard"} </button>          
+            <Mode></Mode>
             <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
         </>
     )
