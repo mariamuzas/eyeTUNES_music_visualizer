@@ -23,15 +23,39 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     const [isMusicOn, setIsMusicOn] = useState(true)
 
     const [keyMap, setKeyMap] = useState({
+        "q": {keyPress: "q", note: "B3", color: "DFFF00", shape: "circle", beat:"8n"},
+        "w": {keyPress: "w", note: "C#4", color: "DE3163", shape: "circle", beat:"8n"},
+        "e": {keyPress: "e", note: "D#4", color: "6495ED", shape: "circle", beat:"8n"},
+        "r": {keyPress: "r", note: "D#4", color: "800080", shape: "circle", beat:"8n"},
+        "t": {keyPress: "t", note: "F#4", color: "6EEB83", shape: "circle", beat:"8n"},
+        "y": {keyPress: "y", note: "G#4", color: "C8A2C8", shape: "circle", beat:"8n"},
+        "u": {keyPress: "u", note: "B4", color: "40E0D0", shape: "circle", beat:"8n"},
+        "i": {keyPress: "i", note: "B4", color: "00FFFF", shape: "circle", beat:"8n"},
+        "o": {keyPress: "o", note: "C#5", color: "2479FC", shape: "circle", beat:"8n"},
+        "p": {keyPress: "p", note: "D#5", color: "00FA9A", shape: "circle", beat:"8n"},
+        
         "a": {keyPress: "a", note: "C4", color: "FC2424", shape: "circle", beat:"8n"},
         "s": {keyPress: "s", note: "D4", color: "45B69C", shape: "circle", beat:"8n"},
         "d": {keyPress: "d", note: "E4", color: "FF8C42", shape: "circle", beat:"8n"},
         "f": {keyPress: "f", note: "F4", color: "E4FF1A", shape: "circle", beat:"8n"},
         "g": {keyPress: "g", note: "G4", color: "6EEB83", shape: "circle", beat:"8n"},
-        "h": {keyPress: "h", note: "A4", color: "C8A2C8", shape: "circle", beat:"8n"},
+        "h": {keyPress: "h", note: "A4", color: "CCCCFF", shape: "circle", beat:"8n"},
         "j": {keyPress: "j", note: "B4", color: "6AB547", shape: "circle", beat:"8n"},
         "k": {keyPress: "k", note: "C5", color: "EC058E", shape: "circle", beat:"8n"},
-        "l": {keyPress: "l", note: "D5", color: "4D9DE0", shape: "circle", beat:"8n"}
+        "l": {keyPress: "l", note: "D5", color: "4D9DE0", shape: "circle", beat:"8n"},
+        "'": {keyPress: "'", note: "E5", color: "F9627D", shape: "circle", beat:"8n"},
+        
+        "z": {keyPress: "z", note: "C3", color: "F17021", shape: "circle", beat:"8n"},
+        "x": {keyPress: "x", note: "D3", color: "EBF121", shape: "circle", beat:"8n"},
+        "c": {keyPress: "c", note: "E3", color: "90FCDA", shape: "circle", beat:"8n"},
+        "v": {keyPress: "v", note: "F3", color: "A6B1E1", shape: "circle", beat:"8n"},
+        "b": {keyPress: "b", note: "G3", color: "FF6F59", shape: "circle", beat:"8n"},
+        "n": {keyPress: "n", note: "A3", color: "4C6085", shape: "circle", beat:"8n"},
+        "m": {keyPress: "m", note: "B3", color: "F662E9", shape: "circle", beat:"8n"},
+        ",": {keyPress: ",", note: "C3", color: "90DDFC", shape: "circle", beat:"8n"},
+        ".": {keyPress: ".", note: "C4", color: "A50104", shape: "circle", beat:"8n"},
+        " ": {keyPress: "space", note: "C4", color: "A50104", shape: "circle", beat:"8n"}
+        
     })
 
     const handleKeyDown = useCallback(({key}) => playKey(key), [])
@@ -112,8 +136,12 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     }
 
     const songText = () => {
-        return song.join("")
+        return song.join(" ")
     }
+
+    // const handleDeleteNote = () => {
+    //     song.pop()
+    // }
 
     const Mode = () => {
         if (isPlayMode) {
@@ -122,6 +150,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
             <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
             <p>Text: {songText()}</p>
+            {/* <button onClick= {handleDeleteNote}>Delete last note</button> */}
             <button onClick={handleSaveForm}>ADD COMMENTS AND SAVE</button>
             </>
           )

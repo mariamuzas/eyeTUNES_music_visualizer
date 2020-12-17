@@ -4,11 +4,11 @@ import { useState } from 'react';
 
 let Pad = styled.li` 
 height: 6vh;
-width: 9vw;
+width: 8vw;
 margin: auto;
 border: 2px solid white;
 color: white;
-font-size: 20pt;
+font-size: 15pt;
 text-align: center;
 `
 
@@ -22,7 +22,7 @@ const Key = ({individualPad, onKeyClick, isLastPad}) => {
         
     return (
         <div onClick={onKeyClick}>
-            <StyledPad color={individualPad.color} isLastPad={isLastPad}>{individualPad.keyPress}</StyledPad>
+            <StyledPad color={individualPad.color} isLastPad={isLastPad}> {individualPad.keyPress} <br/> {individualPad.note} </StyledPad>
         </div>
     )
 }
