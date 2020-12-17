@@ -98,6 +98,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         playKey(currentKey)
         setPlaceInSong(index + 1)
         setLastTimeout(setTimeout(() => replaySong(song, index + 1), time))
+        setSong([])
     }
 
     useEffect(() => {
@@ -152,6 +153,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
                     <button className="buttons" onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "PAUSE  YOUR SONG" : "PLAY BACK YOUR SONG"}</button>
                     <button className="buttons" onClick={handleDeleteNote}>DELETE YOUR LAST NOTE</button>
                     <button className="buttons" onClick={handleSaveForm}>SAVE YOUR ARTWORK</button>
+                    {/* <button onClick= {handleMute}>Unmute</button> */}
                 </div>
             </aside>
           )
