@@ -6,9 +6,6 @@ import {useState, useEffect, useCallback} from 'react'
 import UserPlaylist from '../components/UserPlaylist.js'
 import React from 'react'
 
-
-
-
 const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
    
     const [song, setSong] = useState([])
@@ -23,7 +20,6 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     const [isShowingForm, setIsShowingForm] = useState(false)
     const [isMusicOn, setIsMusicOn] = useState(true)
     const [text, setText] = useState("")
-    const [safeSong, setSaveSong] = useState(false)
 
     const [keyMap, setKeyMap] = useState({
         "q": {keyPress: "q", note: "B3", color: "DFFF00", shape: "circle", beat:"8n"},
@@ -125,8 +121,6 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     } 
 
     const replaySavedSong = (data) => {
-        setSaveSong(true);
-        
         replaySong(data, 0, 350);
         
     }
