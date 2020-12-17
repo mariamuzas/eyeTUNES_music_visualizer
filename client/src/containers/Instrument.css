@@ -9,6 +9,6 @@
     grid-template-columns: repeat(10, 3fr);
     grid-template-rows: repeat(3, 1fr);
     list-style-type: none;
-    border: 2px solid chartreuse;
+    /* border: 2px solid chartreuse; */
 }
 

@@ -10,6 +10,7 @@ border: 2px solid white;
 color: white;
 font-size: 15pt;
 text-align: center;
+box-shadow: 1px 3px 5px white;
 `
 
 const StyledPad = styled(Pad).attrs(props => ({
