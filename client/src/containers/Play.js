@@ -21,7 +21,6 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     const [isPlayMode, setIsPlayMode] = useState(true)
     const [isShowingForm, setIsShowingForm] = useState(false)
     const [isMusicOn, setIsMusicOn] = useState(true)
-    const [cleanUpFunction, setCleanUpFunction] = useState(null)
 
     const [keyMap, setKeyMap] = useState({
         "a": {keyPress: "a", note: "C4", color: "FC2424", shape: "circle", beat:"8n"},
@@ -113,7 +112,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     }
 
     const songText = () => {
-        return song.toString()
+        return song.join("")
     }
 
     const Mode = () => {
