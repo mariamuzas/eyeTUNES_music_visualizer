@@ -86,6 +86,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         if(!isPlayingSong && lastKey.length === 1 ){ 
             setSong([...song, lastKey]);
         }
+        setText(song.join(""))
     }, [lastKey])
 
     const replaySong = (song, index=0, time=350) => {
@@ -137,12 +138,9 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     }
 
     const handleDeleteNote = () => {
-        song.splice(-1, 1)
-        setText(song)
-    }
-
-    const songText = () => {
-        return song.join("")
+        const lastElement = song.length-1
+        song.splice(lastElement, 1)
+        setText(song.join(""))
     }
 
     const Mode = () => {
@@ -150,7 +148,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
           return (
             <aside class="mode-container">
                 <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
-                <p>YOUR LAST PLAYED NOTES: {songText()}</p>
+                <p>YOUR LAST PLAYED NOTES: {text}</p>
                 <div>
                     <button className="buttons" onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "PAUSE  YOUR SONG" : "PLAY BACK YOUR SONG"}</button>
                     <button className="buttons" onClick={handleDeleteNote}>DELETE YOUR LAST NOTE</button>
