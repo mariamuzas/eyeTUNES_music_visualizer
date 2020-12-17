@@ -2,7 +2,7 @@ import * as Tone from 'tone'
 import Instrument from '../containers/Instrument.js'
 import SongForm from '../components/SongForm.js'
 import Visual from '../containers/Visual.js'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useCallback} from 'react'
 import UserPlaylist from '../components/UserPlaylist.js'
 import React from 'react'
 
@@ -20,7 +20,8 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     const [lastTimeout, setLastTimeout] = useState(null)
     const [isPlayMode, setIsPlayMode] = useState(true)
     const [isShowingForm, setIsShowingForm] = useState(false)
-    const [isMusicOn, setIsMusicOn] = useState(false)
+    const [isMusicOn, setIsMusicOn] = useState(true)
+    const [cleanUpFunction, setCleanUpFunction] = useState(null)
 
     const [keyMap, setKeyMap] = useState({
         "a": {keyPress: "a", note: "C4", color: "FC2424", shape: "circle", beat:"8n"},
@@ -34,35 +35,34 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         "l": {keyPress: "l", note: "D5", color: "4D9DE0", shape: "circle", beat:"8n"}
     })
 
+    const handleKeyDown = useCallback(({key}) => playKey(key), [])
 
     useEffect(() => {
         if(isMusicOn) {
-            document.addEventListener('keydown', ({ key }) => playKey(key))
+            document.addEventListener('keydown', handleKeyDown)
         } 
-        else if (!isMusicOn) {
-            document.removeEventListener('keydown', ({key}) => playKey({key}))
+        else {
+            document.removeEventListener('keydown', handleKeyDown)
         }
     }, [isMusicOn])
 
-    // useEffect(() => {
-    //         document.addEventListener('keydown', ({ key }) => playKey(key))
-    // }, [])
+    const synth = new Tone.Synth().toDestination();
+
+    const playKey = function(key) {
+        if (!Object.keys(keyMap).includes(key) || !isMusicOn) return;
+        if (isMusicOn){
+            const { note, beat } = keyMap[key]
+            synth.triggerAttackRelease(note, beat)
+            setLastKey(key)
+            setTimeout(() => setLastKey(""), 250)
+        }
+    }
 
     useEffect(() => {
         if(!isPlayingSong && lastKey.length === 1 ){ 
             setSong([...song, lastKey]);
         }
     }, [lastKey])
-
-    const synth = new Tone.Synth().toDestination();
-
-    const playKey = function(key) {
-        if (!Object.keys(keyMap).includes(key) || !isMusicOn) return;
-        const { note, beat } = keyMap[key]
-        synth.triggerAttackRelease(note, beat)
-        setLastKey(key)
-        setTimeout(() => setLastKey(""), 250)
-    }
 
     const replaySong = (song, index=0, time=350) => {
         if (index >= song.length) {
@@ -93,7 +93,6 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         addPlaylist(newMusicItem)
         setCurrentSong(newSong.songData)
         setSong([])
-        setIsMusicOn(true)
     }
 
     const handlePauseResumeClick = (evt) => {
@@ -110,7 +109,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
 
     const handleSaveForm = () => {
         isShowingForm ? setIsShowingForm(false) : setIsShowingForm(true)
-        setIsMusicOn(false)
+        isMusicOn ? setIsMusicOn(false) : setIsMusicOn(true)
     }
 
     const songText = () => {
