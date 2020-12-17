@@ -20,7 +20,6 @@ const UserPlaylist = ({playlist,  onDeleteSubmit, onReplaySaveSong, loaded}) => 
 
     return (
         <>
-            <p>this is the playlist</p>
             <ul>
                 {songlist}
             </ul>

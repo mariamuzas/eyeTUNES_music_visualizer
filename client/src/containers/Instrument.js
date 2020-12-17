@@ -1,5 +1,4 @@
 import Key from '../components/Key.js'
-import { Tone } from "tone/build/esm/core/Tone"
 import './Instrument.css';
 import React from 'react'
 

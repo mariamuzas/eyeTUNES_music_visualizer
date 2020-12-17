@@ -6,7 +6,7 @@ import React from 'react'
 const Visual =({lastKey, pads}) => {
 
     const keyVisuals = Object.values(pads).map(pad => (
-        <KeyVisual color={pad.color} playState={pad.keyPress === lastKey} padKey={pad.keyPress}/>
+        <KeyVisual key={pad.keyPress} color={pad.color} playState={pad.keyPress === lastKey} padKey={pad.keyPress}/>
     ))
 
     return(

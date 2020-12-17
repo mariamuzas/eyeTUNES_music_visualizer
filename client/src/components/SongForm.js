@@ -4,7 +4,7 @@ const SongForm = ({onFormSubmit, keys}) => {
 
     const [title, setTitle] = useState("")
     const [comment, setComment] = useState("")
-    const [newkeys, setNewKeys] = ([keys])
+    // const [newkeys, setNewKeys] = ([keys])
 
     // const settingkeys = () => {
     //     setNewKeys(keys)
@@ -39,13 +39,13 @@ const SongForm = ({onFormSubmit, keys}) => {
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
-                    placeholder="title" 
+                    placeholder="TITLE" 
                     value={title}
                     onChange={handleTitleChange} 
                 />
                 <input 
                     type="text"
-                    placeholder="Comment"
+                    placeholder="COMMENT"
                     value={comment}
                     onChange={handleCommentChange}
                     />

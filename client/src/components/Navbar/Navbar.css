@@ -1,18 +1,20 @@
 nav{
     width: 100vw;
-    height: 10vh;
+    height: 12vh;
     background-color: black;
     color: white; 
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 0px;
     
 }
 
 .logo{
     display: block;
-    padding: 3vh;
-    border: 2px solid white;
+    height: 22vh;
+    padding: 20px;
+
 }
 
 ul {
@@ -20,7 +22,7 @@ ul {
     display: flex;
     justify-content: flex-end;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
     padding: 0px;
     margin: 0px;
     align-items: center;
@@ -36,6 +38,6 @@ a {
     justify-content: flex-end;
 }
 
-li:hover{
-    background-color: yellowgreen;
+a:hover {
+    cursor: pointer;
 }

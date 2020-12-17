@@ -6,6 +6,6 @@ footer{
 }
 
 .block-colour{
-    background-color: chartreuse;
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);;
     padding: 3px;
 }

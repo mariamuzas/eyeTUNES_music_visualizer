@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import anime, { random } from 'animejs';
+import anime from 'animejs';
 import './KeyVisual.css'
 import { useState, useEffect } from 'react';
-import invert from 'invert-color'
 import React from 'react'
 
 const StyledKeyVisual = styled.div.attrs(props => {
@@ -19,11 +18,16 @@ const StyledKeyVisual = styled.div.attrs(props => {
     margin-top: 10vh;
     z-index: 1;
     grid-area: dot;
+    align-items: center;
 `
 
-const distance = 100;
+const distance = 150;
 const variance = 80;
 const directionalTranslates = [
+    {
+        x: 0,
+        y: 0
+    },
     {
         x: 0,
         y: 1
@@ -66,7 +70,7 @@ const KeyVisual = ({color, playState, padKey}) => {
     const createCircles = () => {
         let newCircles = []
         directionalTranslates.forEach((translation, i) => {
-            newCircles = [...newCircles, <StyledKeyVisual color={color} playState={playState} className={`${padKey}-visual-${i}`}/>]
+            newCircles = [...newCircles, <StyledKeyVisual key={i} color={color} playState={playState} className={`${padKey}-visual-${i}`}/>]
         })
         setCircles(newCircles)
     }
@@ -77,27 +81,30 @@ const KeyVisual = ({color, playState, padKey}) => {
             newAnimations = [...newAnimations, anime({
                 targets: `div.${padKey}-visual-${i}`,
                 autoplay: false,
-                backgroundColor: invert('#'+color).padStart(6,"0"),
-                borderRadius: '20%',
+                // backgroundColor: invert('#'+color).padStart(6,"0"),
+                borderRadius: '15%',
                 translateY:[
-                    {value: (translation.y * (distance + Math.floor(Math.random() * variance))), duration: 545},
+                    {value: (translation.y * (distance + Math.floor(Math.random() * variance))), duration: 400},
                 ],
                 translateX:[
-                    {value: (translation.x * (distance + Math.floor(Math.random() * variance))), duration: 545}
+                    {value: (translation.x * (distance + Math.floor(Math.random() * variance))), duration: 400}
                 ],
-                scale: [1, 6],
+                scale: [1, 4],
                 opacity: [
                     {value: '0%', duration: 0},
-                    {value: '100%', duration: 90},
-                    {value: '80%', duration: 50},
-                    {value: '70%', duration: 30},
-                    {value: '0%', duration: 375}
+                    {value: '100%', duration: 45},
+                    {value: '30%', duration: 75},
+                    {value: '500%', duration: 165},
+                    {value: '100%', duration: 77},
+                    {value: '0%', duration: 6}
                 ],
-                easing: 'easeInOutBounce'
+                direction: 'alternate',
+                easing: 'easeOutElastic'
             })]
         })
         setAnimations(newAnimations)
     }, [circles])
+
 
     useEffect(() => {
         if (playState) {

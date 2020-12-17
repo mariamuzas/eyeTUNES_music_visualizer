@@ -26,7 +26,7 @@ const About = () => (
         </p>
         <br/>
         <h4>To be explored...</h4>
-        <p>So that’s it. The story of our simple music visualiser: [App name]. We hope it’s as fun to explore as it was to work on (and hopefully less challenging!)
+        <p>So that’s it. The story of our simple music visualiser: eyeTUNES. We hope it’s as fun to explore as it was to work on (and hopefully less challenging!)
         Given more time and more experience, we’d like to imagine it could be much more about user choice and control — over sounds, colours, animations and touch — and one day become truly inclusive.
         </p>
         {/* <p>Cat, Dave, Iain, Maria: CodeClan cohort e43, December 2020</p> */}
