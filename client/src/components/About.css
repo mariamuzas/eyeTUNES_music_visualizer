@@ -1,0 +1,29 @@
+.about-section{
+    height: 100%;
+    margin: 0;
+    justify-content: center;
+    padding: 5vh 10vw;
+}
+
+h3 {
+    margin: 0px;
+    line-height: 30pt;
+    font-size: 24pt;
+}
+
+h4 {
+    margin: 0px;
+    line-height: 30pt;
+    font-size: 18pt;
+}
+
+p {
+    margin: 0px;
+    line-height: 20pt;
+    font-size: 12pt;
+}
+
+blockquote{
+    font-style: italic;
+    color: chartreuse;
+}

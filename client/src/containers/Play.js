@@ -150,11 +150,11 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
           return (
             <aside class="mode-container">
                 <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
-                <p>Text: {songText()}</p>
+                <p>YOUR LAST PLAYED NOTES: {songText()}</p>
                 <div>
-                    <button className="buttons" onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
-                    <button className="buttons" onClick={handleDeleteNote}>Delete last note</button>
-                    <button className="buttons" onClick={handleSaveForm}>ADD COMMENTS AND SAVE</button>
+                    <button className="buttons" onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "PAUSE  YOUR SONG" : "PLAY BACK YOUR SONG"}</button>
+                    <button className="buttons" onClick={handleDeleteNote}>DELETE YOUR LAST NOTE</button>
+                    <button className="buttons" onClick={handleSaveForm}>SAVE YOUR ARTWORK</button>
                 </div>
             </aside>
           )
@@ -177,7 +177,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             <Mode></Mode>
             <FormMode></FormMode>
             <section className="show-your-playlist">
-                <button className="buttons" onClick={handleSwitchMode}>{isPlayMode ? "Show your playlist" : "Show keyboard"} </button>
+                <button className="buttons" onClick={handleSwitchMode}>{isPlayMode ? "SHOW YOUR PLAYLIST" : "SHOW YOUR KEYBOARD"} </button>
             </section>
         </>
     )

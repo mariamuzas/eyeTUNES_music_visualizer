@@ -9,9 +9,9 @@ width: 8vw;
 margin: auto;
 border: 2px solid white;
 color: white;
-font-size: 10pt;
+font-size: 12pt;
 text-align: center;
-box-shadow: 1px 3px 5px white;
+justify-content: center;
 `
 
 const StyledPad = styled(Pad).attrs(props => ({
