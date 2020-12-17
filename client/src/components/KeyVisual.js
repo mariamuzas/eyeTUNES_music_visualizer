@@ -21,7 +21,7 @@ const StyledKeyVisual = styled.div.attrs(props => {
     align-items: center;
 `
 
-const distance = 150;
+const distance = 100;
 const variance = 80;
 const directionalTranslates = [
     {
@@ -82,7 +82,7 @@ const KeyVisual = ({color, playState, padKey}) => {
                 targets: `div.${padKey}-visual-${i}`,
                 autoplay: false,
                 // backgroundColor: invert('#'+color).padStart(6,"0"),
-                borderRadius: '15%',
+                borderRadius: '25%',
                 translateY:[
                     {value: (translation.y * (distance + Math.floor(Math.random() * variance))), duration: 400},
                 ],
@@ -92,14 +92,13 @@ const KeyVisual = ({color, playState, padKey}) => {
                 scale: [1, 4],
                 opacity: [
                     {value: '0%', duration: 0},
-                    {value: '100%', duration: 45},
+                    {value: '10%', duration: 45},
                     {value: '30%', duration: 75},
-                    {value: '500%', duration: 165},
-                    {value: '100%', duration: 77},
+                    {value: '80%', duration: 65},
+                    {value: '500%', duration: 277},
                     {value: '0%', duration: 6}
                 ],
-                direction: 'alternate',
-                easing: 'easeOutElastic'
+                easing: 'easeOutBounce(1, .8)'
             })]
         })
         setAnimations(newAnimations)
