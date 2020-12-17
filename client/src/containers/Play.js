@@ -20,7 +20,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     const [lastTimeout, setLastTimeout] = useState(null)
     const [isPlayMode, setIsPlayMode] = useState(true)
     const [isShowingForm, setIsShowingForm] = useState(false)
-    const [isMusicOn, setIsMusicOn] = useState(true)
+    const [isMusicOn, setIsMusicOn] = useState(false)
 
     const [keyMap, setKeyMap] = useState({
         "a": {keyPress: "a", note: "C4", color: "FC2424", shape: "circle", beat:"8n"},
@@ -40,11 +40,14 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             document.addEventListener('keydown', ({ key }) => playKey(key))
         } 
         else if (!isMusicOn) {
-            document.removeEventListener('keydown', () => playKey())
+            document.removeEventListener('keydown', ({key}) => playKey({key}))
         }
     }, [isMusicOn])
 
-    
+    // useEffect(() => {
+    //         document.addEventListener('keydown', ({ key }) => playKey(key))
+    // }, [])
+
     useEffect(() => {
         if(!isPlayingSong && lastKey.length === 1 ){ 
             setSong([...song, lastKey]);
@@ -54,7 +57,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     const synth = new Tone.Synth().toDestination();
 
     const playKey = function(key) {
-        if (!Object.keys(keyMap).includes(key)) return;
+        if (!Object.keys(keyMap).includes(key) || !isMusicOn) return;
         const { note, beat } = keyMap[key]
         synth.triggerAttackRelease(note, beat)
         setLastKey(key)
@@ -120,8 +123,8 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             <>
             <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
             <button onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "Pause" : "Play"}</button>
-            <button onClick={handleSaveForm}>ADD COMMENTS AND SAVE</button>
             <p>Text: {songText()}</p>
+            <button onClick={handleSaveForm}>ADD COMMENTS AND SAVE</button>
             </>
           )
         }

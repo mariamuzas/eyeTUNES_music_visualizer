@@ -12,6 +12,7 @@ const SongForm = ({onFormSubmit, keys}) => {
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value)
+        
     }
 
     const handleCommentChange = (event) => {
