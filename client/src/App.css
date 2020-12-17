@@ -1,7 +1,56 @@
 body{
-
   font-family: Arial, Helvetica, sans-serif;
   margin: 0px;
   height: 100vh;
   width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons{
+  width: 15vw;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #FFFFFF;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-weight:300;
+  background-color: #000000;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+}
+
+.buttons:hover {
+  color:#000000;
+  background-color:#FFFFFF;
+}
+
+.mode-container{
+  display: grid;
+  grid-template-columns: 0fr;
+  grid-template-rows: 2fr;
+  margin: 0px;
+  height: 50vh;
+  background-color: #000000;
+  color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+}
+
+.mode-container p{
+  margin: 0px;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.show-your-playlist{
+  display: flex;
+  background-color: #000000;
+  color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }

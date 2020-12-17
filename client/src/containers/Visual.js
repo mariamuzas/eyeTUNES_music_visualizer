@@ -10,9 +10,9 @@ const Visual =({lastKey, pads}) => {
     ))
 
     return(
-        <div className="visual-container">
+        <section className="visual-container">
             { keyVisuals }
-        </div>
+        </section>
     )
 }
 

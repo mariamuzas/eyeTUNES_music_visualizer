@@ -18,8 +18,8 @@ const Song = ({title, comment, id, onDeleteSubmit, data, onReplaySaveSong}) => {
             <p>Thumbnail</p>
             <p>{title}</p>
             <p>{comment}</p>
-            <button onClick={handleDelete}>Delete song</button>
-            <button onClick={handleReplay}>Play</button>
+            <button className="buttons" onClick={handleDelete}>Delete song</button>
+            <button className="buttons" onClick={handleReplay}>Play</button>
         </li>
     )
 }

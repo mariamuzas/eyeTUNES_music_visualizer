@@ -49,7 +49,7 @@ const SongForm = ({onFormSubmit, keys}) => {
                     value={comment}
                     onChange={handleCommentChange}
                     />
-                <input type="submit" value="POST" />
+                <input className="buttons" type="submit" value="POST" />
             </form>
         </>
     )

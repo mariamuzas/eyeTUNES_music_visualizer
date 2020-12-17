@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 let Pad = styled.li` 
+display: block;
 height: 6vh;
 width: 8vw;
 margin: auto;
 border: 2px solid white;
 color: white;
-font-size: 15pt;
+font-size: 10pt;
 text-align: center;
 box-shadow: 1px 3px 5px white;
 `
@@ -20,10 +21,11 @@ const StyledPad = styled(Pad).attrs(props => ({
 }))``
      
 const Key = ({individualPad, onKeyClick, isLastPad}) => {
+
         
     return (
         <div onClick={onKeyClick}>
-            <StyledPad color={individualPad.color} isLastPad={isLastPad}> {individualPad.keyPress} <br/> {individualPad.note} </StyledPad>
+            <StyledPad color={individualPad.color} isLastPad={isLastPad}> {individualPad.keyPress.toUpperCase()} <br/> {individualPad.note} </StyledPad>
         </div>
     )
 }
