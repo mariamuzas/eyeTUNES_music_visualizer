@@ -1,6 +1,4 @@
-import * as Tone from 'tone';
 import styled from 'styled-components';
-import { useState } from 'react';
 
 let Pad = styled.li` 
 display: block;

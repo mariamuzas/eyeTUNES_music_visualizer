@@ -8,6 +8,7 @@ import React from 'react'
 
 
 
+
 const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
    
     const [song, setSong] = useState([])
@@ -30,7 +31,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         "r": {keyPress: "r", note: "D#4", color: "800080", shape: "circle", beat:"8n"},
         "t": {keyPress: "t", note: "F#4", color: "6EEB83", shape: "circle", beat:"8n"},
         "y": {keyPress: "y", note: "G#4", color: "C8A2C8", shape: "circle", beat:"8n"},
-        "u": {keyPress: "u", note: "B4", color: "40E0D0", shape: "circle", beat:"8n"},
+        "u": {keyPress: "u", note: "A#4", color: "40E0D0", shape: "circle", beat:"8n"},
         "i": {keyPress: "i", note: "B4", color: "FCBA04", shape: "circle", beat:"8n"},
         "o": {keyPress: "o", note: "C#5", color: "2479FC", shape: "circle", beat:"8n"},
         "p": {keyPress: "p", note: "D#5", color: "00FA9A", shape: "circle", beat:"8n"},
@@ -53,9 +54,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         "b": {keyPress: "b", note: "G3", color: "FF6F59", shape: "circle", beat:"8n"},
         "n": {keyPress: "n", note: "A3", color: "4C6085", shape: "circle", beat:"8n"},
         "m": {keyPress: "m", note: "B3", color: "F662E9", shape: "circle", beat:"8n"},
-        ",": {keyPress: "Comma", note: "C3", color: "90DDFC", shape: "circle", beat:"8n"},
-        ".": {keyPress: "Full Stop", note: "C4", color: "A50104", shape: "circle", beat:"8n"},
-        " ": {keyPress: "Space", note: "C4", color: "000000", shape: "circle", beat:"16n"}
+        " ": {keyPress: "Space", note: "C4", color: "A50104", shape: "circle", beat:"8n"}
         
     })
 
@@ -146,7 +145,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     const Mode = () => {
         if (isPlayMode) {
           return (
-            <aside class="mode-container">
+            <aside className="mode-container">
                 <Instrument pads={keyMap} onKeyClick={playKey} lastKey={lastKey} />
                 <p>YOUR LAST PLAYED NOTES: {text}</p>
                 <div>
@@ -175,7 +174,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             <Mode></Mode>
             <FormMode></FormMode>
             <section className="show-your-playlist">
-                <button className="buttons" onClick={handleSwitchMode}>{isPlayMode ? "SHOW YOUR PLAYLIST" : "SHOW YOUR KEYBOARD"} </button>
+                <button className="buttons" onClick={handleSwitchMode}>{isPlayMode ? "SHOW YOUR COLLECTION" : "SHOW YOUR KEYBOARD"} </button>
             </section>
         </>
     )

@@ -9,12 +9,15 @@ h3 {
     margin: 0px;
     line-height: 30pt;
     font-size: 24pt;
+    padding: 10px;
+    background: linear-gradient(to right, transparent, orange , yellow, green, cyan, blue, violet, transparent);
 }
 
 h4 {
     margin: 0px;
     line-height: 30pt;
     font-size: 18pt;
+    
 }
 
 p {
@@ -25,5 +28,4 @@ p {
 
 blockquote{
     font-style: italic;
-    color: chartreuse;
 }

@@ -11,8 +11,8 @@ body{
 }
 
 .buttons{
-  width: 15vw;
-  height: 5vh;
+  width: 7vw;
+  /* height: 5vh; */
   display: inline-block;
   padding: 0.35em 1.2em;
   border: 0.1em solid #FFFFFF;
@@ -25,7 +25,6 @@ body{
   color:#FFFFFF;
   text-align:center;
   transition: all 0.2s;
-  /* box-shadow: 1px 3px 5px white; */
 }
 
 .buttons:hover {
@@ -54,9 +53,34 @@ body{
 
 .show-your-playlist{
   display: flex;
-  background-color: #000000;
-  color: #FFFFFF;
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+.song-list{
+  display: flex;
+  overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+input {
+  width: 15vw;
+  height: 4vh;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.25em solid #00d6e6;
+  margin: 2em 0.5em 0.5em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-weight:400;
+  background-color: #FFFFFF;
+  color:#000000;
+  text-align:center;
+}
+
+img{
+  width: 12vw;
 }
