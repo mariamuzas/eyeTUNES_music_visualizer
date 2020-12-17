@@ -93,7 +93,7 @@ const KeyVisual = ({color, playState, padKey}) => {
                     {value: '70%', duration: 30},
                     {value: '0%', duration: 375}
                 ],
-                easing: 'easeInOutBounce'
+                easing: 'easeOutBounce'
             })]
         })
         setAnimations(newAnimations)
