@@ -4,14 +4,20 @@ db.dropdatabase();
 db.songs.insertMany([
     {
         title: "Harrisong",
-        songData: ["a", "s", "d", "f", "g"],
-        comment: "Spic",
+        songData: ["e", "h", "l", "r", "y", "h"],
+        comment: "Spicy",
         thumbnail: ""
     },
     {
         title: "Ode to a salmon",
-        songData: ["g", "a", "a", "s", "d"],
+        songData: ["b", "z", "b", "z", "n", "n", "b", "n", "b", "z"],
         comment: "Lovely",
+        thumbnail: ""
+    },
+    {
+        title:"Christmas",
+        songData: ["a", "f", "f", "g", "f", "d", "s", "s","s", "f", "g", "g", "h", "g", "f", "d", "a", "a","h", "h", "u", "h", "g", "f", "s", "a", "a", "s", "h", "g", "d", "f"],
+        comment: "Christmas Carols",
         thumbnail: ""
     }
 ])
