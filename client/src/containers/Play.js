@@ -23,6 +23,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     const [isShowingForm, setIsShowingForm] = useState(false)
     const [isMusicOn, setIsMusicOn] = useState(true)
     const [text, setText] = useState("")
+    const [safeSong, setSaveSong] = useState(false)
 
     const [keyMap, setKeyMap] = useState({
         "q": {keyPress: "q", note: "B3", color: "DFFF00", shape: "circle", beat:"8n"},
@@ -98,7 +99,6 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         playKey(currentKey)
         setPlaceInSong(index + 1)
         setLastTimeout(setTimeout(() => replaySong(song, index + 1), time))
-        setSong([])
     }
 
     useEffect(() => {
@@ -125,11 +125,21 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
     } 
 
     const replaySavedSong = (data) => {
-        replaySong(data, 0, 350)
+        setSaveSong(true);
+        
+        replaySong(data, 0, 350);
+        
     }
 
     const handleSwitchMode = () => {
-        isPlayMode ? setIsPlayMode(false) : setIsPlayMode(true)
+        if (isPlayMode) {
+            setIsPlayMode(false)
+         } else {
+            setSong([]);
+            setText("")
+            setIsPlayMode(true)
+            }
+        
     }
 
     const handleSaveForm = () => {
