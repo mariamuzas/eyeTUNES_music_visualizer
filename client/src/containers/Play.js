@@ -8,6 +8,7 @@ import React from 'react'
 
 
 
+
 const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
    
     const [song, setSong] = useState([])
@@ -173,7 +174,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             <Mode></Mode>
             <FormMode></FormMode>
             <section className="show-your-playlist">
-                <button className="buttons" onClick={handleSwitchMode}>{isPlayMode ? "SHOW YOUR PLAYLIST" : "SHOW YOUR KEYBOARD"} </button>
+                <button className="buttons" onClick={handleSwitchMode}>{isPlayMode ? "SHOW YOUR COLLECTION" : "SHOW YOUR KEYBOARD"} </button>
             </section>
         </>
     )

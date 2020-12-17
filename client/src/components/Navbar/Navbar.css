@@ -12,9 +12,8 @@ nav{
 
 .logo{
     display: block;
-    height: 22vh;
-    padding: 20px;
-
+    width: 20vw;
+    padding: 20px
 }
 
 ul {

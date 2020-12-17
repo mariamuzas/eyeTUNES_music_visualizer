@@ -53,11 +53,16 @@ body{
 
 .show-your-playlist{
   display: flex;
-  background-color: #000000;
-  color: #FFFFFF;
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+.song-list{
+  display: flex;
+  overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
 input {
@@ -74,4 +79,8 @@ input {
   background-color: #FFFFFF;
   color:#000000;
   text-align:center;
+}
+
+img{
+  width: 12vw;
 }
