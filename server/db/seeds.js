@@ -16,7 +16,7 @@ db.songs.insertMany([
     },
     {
         title:"Christmas",
-        songData: ["a", "f", "f", "g", "f", "d", "s", "s","s", "f", "g", "g", "h", "g", "f", "d", "a", "a","h", "h", "u", "h", "g", "f", "s", "a", "a", "s", "h", "g", "d", "f"],
+        songData: ["f", "f", "g", "f", "d", "s", "s"],
         comment: "Christmas Carols",
         thumbnail: ""
     }
