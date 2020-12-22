@@ -46,7 +46,6 @@ function App() {
           <Switch>
             <Route exact path="/" render={() => <Play playlist={playlist} addPlaylist={(musicItem) => addMusicItem(musicItem)}  onDeleteSubmit={deleteById}/>} />
             <Route path="/about" component={About}/>
-            {/* <Route path="/user" component={User}/> */}
           </Switch>
           <Footer />
         </>
