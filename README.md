@@ -54,7 +54,3 @@ $ npm start
 - [Tone.js](https://tonejs.github.io/) - Web Audio framework for creating interactive music in the browser.
 - [anime,js](https://animejs.com/) - Lightweight JavaScript animation library
 - [styled-components](https://styled-components.com/)
-
-
-
-<img width="1261" alt="eyeTunes_landing_page" src="https://user-images.githubusercontent.com/65955047/103485419-0b2d3780-4dee-11eb-8ac4-88647ee52928.png">
