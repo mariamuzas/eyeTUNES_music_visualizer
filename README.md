@@ -1,4 +1,4 @@
-# GeoQuiz educational web app and game
+# eyeTunes - Music visualizer
 
 Art For Everyone.
 
