@@ -31,18 +31,27 @@ The user should be able to:
 
 
 ## Setup
-To run this project, install it locally using npm: 
+Install dependencies in both the client and the server folders:
+```
+cd client
+npm install
 
-Client: 
+cd server
+npm install
 ```
-$ cd ../client
-$ npm install
+
+Seed the database.  Within the server folder:
+```
+npm run seeds
+```
+
+Run express (leave running in a terminal window).  Within the server folder:
+```
+npm run server:dev
+```
+
+Run React development environment (leave running in a terminal window).  Within client folder:
+```
 $ npm start
-```
-Server:
-```
-$ cd ../server
-$ npm install
-$ npm run server:dev
 ```
 
