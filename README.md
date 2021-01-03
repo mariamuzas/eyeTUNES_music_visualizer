@@ -28,21 +28,21 @@ The user should be able to:
 ## Setup
 Install dependencies in both the client and the server folders:
 ```
-cd client
-npm install
+$ cd client
+$ npm install
 
-cd server
-npm install
+$ cd server
+$ npm install
 ```
 
 Seed the database.  Within the server folder:
 ```
-npm run seeds
+$ npm run seeds
 ```
 
 Run express (leave running in a terminal window).  Within the server folder:
 ```
-npm run server:dev
+$ npm run server:dev
 ```
 
 Run React development environment (leave running in a terminal window).  Within client folder:
