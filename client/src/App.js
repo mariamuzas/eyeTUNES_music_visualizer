@@ -13,6 +13,7 @@ function App() {
   const [playlist, setPlaylist] = useState([]);
   const [loaded, setLoaded] = useState(false);
   
+  //fetch all the songs from the db
   const fetchSongs = () => {
     console.log("getting songs info");
     SongService.getSongs()
@@ -33,7 +34,6 @@ function App() {
   useEffect(() => {
     fetchSongs();
   }, [])
-  
   
   if (!loaded) {
     return <p>Loading...</p>

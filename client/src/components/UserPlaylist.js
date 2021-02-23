@@ -7,7 +7,7 @@ const UserPlaylist = ({playlist,  onDeleteSubmit, onReplaySaveSong, loaded}) => 
     
     const songlist = playlist.map(song => {
             return(
-            <Song title={song.title} key={song._id} id={song._id} comment={song.comment} data= {song.songData} onDeleteSubmit={onDeleteSubmit} onReplaySaveSong = {onReplaySaveSong} >
+            <Song title={song.title} key={song._id} id={song._id} comment={song.comment} songData= {song.songData} onDeleteSubmit={onDeleteSubmit} onReplaySaveSong = {onReplaySaveSong} >
             </Song>
         )
     })

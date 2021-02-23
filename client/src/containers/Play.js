@@ -51,12 +51,13 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         "b": {keyPress: "b", note: "G3", color: "FF6F59", shape: "circle", beat:"8n"},
         "n": {keyPress: "n", note: "A3", color: "4C6085", shape: "circle", beat:"8n"},
         "m": {keyPress: "m", note: "B3", color: "F662E9", shape: "circle", beat:"8n"},
-        " ": {keyPress: "Space", note: "C4", color: "A50104", shape: "circle", beat:"8n"}
-        
+        " ": {keyPress: "Space", note: "C4", color: "A50104", shape: "circle", beat:"8n"} 
     })
+    
+    //create a synth from the Tone library and connect the output to the destination node (speakers)
+    const synth = new Tone.Synth().toDestination();
 
-    const handleKeyDown = useCallback(({key}) => playKey(key), [])
-
+    //need to manipulate the DOM to be able to call the playKey method again
     useEffect(() => {
         if(isMusicOn) {
             document.addEventListener('keydown', handleKeyDown)
@@ -65,10 +66,13 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             document.removeEventListener('keydown', handleKeyDown)
         }
     }, [isMusicOn])
-
-    const synth = new Tone.Synth().toDestination();
+    //Pass an inline callback and an array of dependencies.
+    // returns memoized version of the callback that only changes if one of the dependencies has changed
+       // returning the cached result when the same inputs occur again
+    const handleKeyDown = useCallback(({key}) => playKey(key), [])  
 
     const playKey = function(key) {
+        //if the key pressed not linked to a note just return
         if (!Object.keys(keyMap).includes(key) || !isMusicOn) return;
         if (isMusicOn){
             const { note, beat } = keyMap[key]
@@ -78,6 +82,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         }
     }
 
+    //when the key is pressed is added to the song State
     useEffect(() => {
         if(!isPlayingSong && lastKey.length === 1 ){ 
             setSong([...song, lastKey]);
@@ -85,6 +90,13 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         setText(song.join(""))
     }, [lastKey])
 
+    const handleDeleteNote = () => {
+        const lastElement = song.length-1
+        song.splice(lastElement, 1)
+        setText(song.join(""))
+    }
+
+    //replay the song just created
     const replaySong = (song, index=0, time=350) => {
         if (index >= song.length) {
             setIsPlayingSong(false)
@@ -120,9 +132,8 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         setPlayState((!isPlayingSong || !playState))
     } 
 
-    const replaySavedSong = (data) => {
-        replaySong(data, 0, 350);
-        
+    const replaySavedSong = (savedSongData) => {
+        replaySong(savedSongData, 0, 350);
     }
 
     const handleSwitchMode = () => {
@@ -133,18 +144,12 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
             setText("")
             setIsPlayMode(true)
             }
-        
     }
 
+    //setMusicOn to false when saving the song. If isMusicOn when they want to write the name of the the piece keys keep playing. 
     const handleSaveForm = () => {
         isShowingForm ? setIsShowingForm(false) : setIsShowingForm(true)
         isMusicOn ? setIsMusicOn(false) : setIsMusicOn(true)
-    }
-
-    const handleDeleteNote = () => {
-        const lastElement = song.length-1
-        song.splice(lastElement, 1)
-        setText(song.join(""))
     }
 
     const Mode = () => {
@@ -157,12 +162,11 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
                     <button className="buttons" onClick={handlePauseResumeClick}>{(playState && isPlayingSong) ? "PAUSE  YOUR SONG" : "PLAY BACK YOUR SONG"}</button>
                     <button className="buttons" onClick={handleDeleteNote}>DELETE YOUR LAST NOTE</button>
                     <button className="buttons" onClick={handleSaveForm}>SAVE YOUR ARTWORK</button>
-                    {/* <button onClick= {handleMute}>Unmute</button> */}
                 </div>
             </aside>
           )
         }
-        return  <UserPlaylist playlist={playlist}  onDeleteSubmit={onDeleteSubmit} onReplaySaveSong={(data)=>replaySavedSong(data)} ></UserPlaylist>
+        return  <UserPlaylist playlist={playlist}  onDeleteSubmit={onDeleteSubmit} onReplaySaveSong={(songData)=>replaySavedSong(songData)} ></UserPlaylist>
       };
     
     const FormMode = () => {

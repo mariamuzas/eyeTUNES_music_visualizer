@@ -2,14 +2,14 @@ import React from 'react'
 import image1 from '../images/Thumbnail1.png'
 
 
-const Song = ({title, comment, id, onDeleteSubmit, data, onReplaySaveSong}) => {
+const Song = ({title, comment, id, onDeleteSubmit, songData, onReplaySaveSong}) => {
 
     const handleDelete = () => {
         onDeleteSubmit(id)
     }
 
     const handleReplay= () => {
-        onReplaySaveSong(data)
+        onReplaySaveSong(songData)
     }
  
 
