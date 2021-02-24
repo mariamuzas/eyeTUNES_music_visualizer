@@ -75,6 +75,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         //if the key pressed not linked to a note just return
         if (!Object.keys(keyMap).includes(key) || !isMusicOn) return;
         if (isMusicOn){
+            //destructuring assignment 
             const { note, beat } = keyMap[key]
             synth.triggerAttackRelease(note, beat)
             setLastKey(key)
@@ -82,7 +83,7 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         }
     }
 
-    //when the key is pressed is added to the song State
+    //when the key is pressed is added to the song state
     useEffect(() => {
         if(!isPlayingSong && lastKey.length === 1 ){ 
             setSong([...song, lastKey]);
@@ -113,8 +114,10 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         if (isPlayingSong && playState) {
             replaySong(song, placeInSong)
         } else if (!playState) {
+            // clear timeoutID
             clearTimeout(lastTimeout)
-        } else if (playState) {
+        } 
+        else if (playState) {
             setIsPlayingSong(true) 
             replaySong(song)
         } 
@@ -128,8 +131,8 @@ const Play =({addPlaylist, playlist,  onDeleteSubmit}) => {
         setSong([])
     }
 
-    const handlePauseResumeClick = (evt) => {
-        setPlayState((!isPlayingSong || !playState))
+    const handlePauseResumeClick = () => {
+        setPlayState(!isPlayingSong || !playState)
     } 
 
     const replaySavedSong = (savedSongData) => {
